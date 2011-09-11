@@ -11,7 +11,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 
 	<servlet-mapping>
 		<servlet-name>cat-web</servlet-name>
-		<url-pattern>*.form</url-pattern>
+		<url-pattern>/app/*</url-pattern>
 	</servlet-mapping>
 
 </web-app>

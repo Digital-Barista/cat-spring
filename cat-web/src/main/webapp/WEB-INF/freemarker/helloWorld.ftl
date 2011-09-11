@@ -1,3 +1,3 @@
 <html>
-	<h1>Hello World - modified - back!</h1>
+	<h1>Hello World!</h1>
 </html>
