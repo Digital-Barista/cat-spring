@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <link type="text/css" href="../css/main.css" rel="stylesheet">
+    <link type="text/css" href="/cat/css/main.css" rel="stylesheet">
   </head>
   <body>
     <#-- Client specific banner -->
