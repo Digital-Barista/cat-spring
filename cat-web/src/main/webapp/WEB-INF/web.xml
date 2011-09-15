@@ -13,5 +13,5 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 		<servlet-name>cat-web</servlet-name>
 		<url-pattern>/app/*</url-pattern>
 	</servlet-mapping>
-
+	
 </web-app>
