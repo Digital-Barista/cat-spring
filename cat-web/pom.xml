@@ -30,7 +30,7 @@
 	        <configuration>
          	  <scanIntervalSeconds>10</scanIntervalSeconds>
          	  <webAppConfig>
-         	  	<contextPath>/cat-test</contextPath>
+         	  	<contextPath>/cat</contextPath>
          	  	<overrideDescriptor>${basedir}/jetty-resources/web.xml</overrideDescriptor>
          	  </webAppConfig>
 	        </configuration>

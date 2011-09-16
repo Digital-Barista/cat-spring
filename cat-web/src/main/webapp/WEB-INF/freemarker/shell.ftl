@@ -9,18 +9,20 @@
 	<!-- BUT . . . the macro will automatically cope with a different context root. -->
   </head>
   <body>
-    <#-- Client specific banner -->
-    <@clientBanner />
+    <div id="body-wrapper">
+      <#-- Client specific banner -->
+      <@clientBanner />
+      
+      <#-- Top navigation links -->
+      <@mainNavigation />
     
-    <#-- Top navigation links -->
-    <@mainNavigation />
-    
-    <#-- Navigation for specific page -->
-    <@leftNavigation />
-    
-    <#-- Template for main body content -->
-    <div class="main-content">
-      <#include mainContent />
-    </div>
+      <#-- Navigation for specific page -->
+      <@leftNavigation />
+      
+      <#-- Template for main body content -->
+      <div id="main-content">
+        <#include mainContent />
+      </div>
+    </diiv>
   </body>
 </html>

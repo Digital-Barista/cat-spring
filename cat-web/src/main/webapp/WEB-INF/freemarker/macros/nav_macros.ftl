@@ -1,30 +1,43 @@
 <#macro mainNavigation>
-  <div class="main-nav">
-    <a href="home" class="main-menu-item">
-      <span>Home</span>
-    </a>
-    <a href="messaging" class="main-menu-item">
-      <span>Messaging</span>
-    </a>
-    <a href="coupon" class="main-menu-item">
-      <span>Coupons</span>
-    </a>
-    <a href="reporting" class="main-menu-item">
-      <span>Reporting</span>
-    </a>
-    <a href="account" class="main-menu-item">
-      <span>My Account</span>
-    </a>
+  <div id="main-nav">
+    <div id="client-nav">
+      <#list navigation.clientItems as item>
+        <#local selectedClass = "">
+        <#if item.selected>
+          <#local selectedClass = "selected">
+        </#if>
+        <a href="${item.url}" class="main-menu-item ${selectedClass}">
+          <span>${item.displayName}</span>
+        </a>
+      </#list>
+    </div>
+    <div id="admin-nav">
+      <a href="user-switcher" class="main-menu-item">
+        <span>User Switcher</span>
+      </a>
+      <a href="system-admin" class="main-menu-item">
+        <span>System Administration</span>
+      </a>
+      <a href="account-admin" class="main-menu-item">
+        <span>Account Administration</span>
+      </a>
+    </div>
   </div>
 </#macro>
 
 <#macro leftNavigation>
-  <div class="left-nav">
-    <a href="http://digitalbarista.com" class="left-menu-item">
-      <span>Digital Barista</span>
-    </a>
-    <a href="help" class="left-menu-item">
-      <span>Help</span>
-    </a>
+  <div id="left-nav">
+      <ul>
+        <li class="left-menu-item">
+          <a href="http://digitalbarista.com">
+            <span>Digital Barista</span>
+          </a>
+        </li>
+        <li class="left-menu-item">
+          <a href="help">
+            <span>Help</span>
+          </a>
+        </li>
+      </ul>
   </div>
 </#macro>

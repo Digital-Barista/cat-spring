@@ -1,5 +1,5 @@
 <#macro clientBanner>
-  <div class="client-banner">
+  <div id="client-banner">
   
   </div>
 </#macro>
