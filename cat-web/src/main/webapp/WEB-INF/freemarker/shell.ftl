@@ -21,7 +21,9 @@
       
       <#-- Template for main body content -->
       <div id="main-content">
-        <#include mainContent />
+      	<#if mainContent??>
+        	<#include mainContent />
+        </#if>
       </div>
     </diiv>
   </body>

@@ -1,10 +1,7 @@
 package com.digitalbarista.cat.controller;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
@@ -60,6 +57,27 @@ public abstract class CatController
 		account.setDisplayName("Account");
 		account.setUrl("account");
 		navigation.getClientItems().add(account);
+
+		
+		NavigationItem userSwitcher = new NavigationItem();
+		userSwitcher.setName(Navigation.NAV_ITEM_USER_SWITCHER);
+		userSwitcher.setDisplayName("User Switcher");
+		userSwitcher.setUrl("user_switcher");
+		navigation.getAdminItems().add(userSwitcher);
+
+		
+		NavigationItem systemAdmin = new NavigationItem();
+		systemAdmin.setName(Navigation.NAV_ITEM_SYSTEM_ADMIN);
+		systemAdmin.setDisplayName("System Administration");
+		systemAdmin.setUrl("system_admin");
+		navigation.getAdminItems().add(systemAdmin);
+
+		
+		NavigationItem accountAdmin = new NavigationItem();
+		accountAdmin.setName(Navigation.NAV_ITEM_ACCOUNT_ADMIN);
+		accountAdmin.setDisplayName("Account Admin");
+		accountAdmin.setUrl("account_admin");
+		navigation.getAdminItems().add(accountAdmin);
 	}
 	
 	protected void setSelectedNavigation(String navItemName)
