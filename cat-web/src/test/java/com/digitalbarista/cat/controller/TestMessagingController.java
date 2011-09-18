@@ -16,14 +16,14 @@ import com.digitalbarista.cat.model.NavigationItem;
 
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/cat-web-servlet.xml",
 		 						 "file:src/main/webapp/WEB-INF/navigation.xml"})
-public class TestHomeController extends AbstractTestNGSpringContextTests {
+public class TestMessagingController extends AbstractTestNGSpringContextTests {
 
-	private HomeController controller;
+	private MessagingController controller;
 	
 	@BeforeMethod(alwaysRun=true)
 	public void setup()
 	{
-		controller = applicationContext.getBean(HomeController.class);
+		controller = applicationContext.getBean(MessagingController.class);
 	}
 	
 	@AfterMethod(alwaysRun=true)
@@ -39,12 +39,12 @@ public class TestHomeController extends AbstractTestNGSpringContextTests {
 		assertThat("View was set wrong.",mv.getViewName(),equalTo("shell"));
 	}
 	
-	@Test
-	public void testModelPopulatedCorrectly()
-	{
-		ModelAndView mv = controller.init();
-		assertThat("Main Content template was not set correctly",(String)mv.getModel().get("mainContent"),equalTo("home.ftl"));
-	}
+//	@Test
+//	public void testModelPopulatedCorrectly()
+//	{
+//		ModelAndView mv = controller.init();
+//		assertThat("Main Content template was not set correctly",(String)mv.getModel().get("mainContent"),equalTo("home.ftl"));
+//	}
 	
 	@Test
 	public void testNavSetCorrectly()
@@ -52,17 +52,17 @@ public class TestHomeController extends AbstractTestNGSpringContextTests {
 		ModelAndView mv = controller.init();
 		Navigation nav = (Navigation)mv.getModel().get("navigation");
 		
-		NavigationItem homeItem = null;
+		NavigationItem messagingItem = null;
 		for(NavigationItem item : nav.getClientItems())
 		{
-			if(item.getName().equals(Navigation.NAV_ITEM_HOME))
+			if(item.getName().equals(Navigation.NAV_ITEM_MESSAGING))
 			{
-				homeItem=item;
+				messagingItem=item;
 				break;
 			}
 		}
 		
-		assertThat("Home nav couldn't be found.",homeItem,notNullValue());
-		assertThat("Home nav was not selected.",homeItem.isSelected(),equalTo(true));
+		assertThat("Messaging nav couldn't be found.",messagingItem,notNullValue());
+		assertThat("Messaging nav was not selected.",messagingItem.isSelected(),equalTo(true));
 	}
 }

@@ -6,7 +6,7 @@
  
   <bean id="navigationItem" class="com.digitalbarista.cat.model.NavigationItem"></bean>
   
-  <bean id="navigation" class="com.digitalbarista.cat.model.Navigation">
+  <bean id="navigation" class="com.digitalbarista.cat.model.Navigation" scope="prototype">
     <property name="clientItems">
       <list>
         <bean parent="navigationItem">
