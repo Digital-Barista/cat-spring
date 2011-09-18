@@ -1,0 +1,38 @@
+#login{
+	width:280px;
+	margin:100px auto;
+  border:1px solid #CCC;
+  padding:5px;
+}
+#login input{
+	width:200px;
+}
+
+#login .username{
+	margin-bottom:5px;
+}
+
+#login .label{
+	width:80px;
+	float:left;
+}
+
+#login .login-header{
+	border-bottom:1px solid #CCC;
+	margin-bottom:20px;
+}
+
+#login .buttons{
+	margin-top:20px;
+	float:right;
+}
+
+#login #login-button{
+	height:20px;
+	border:1px solid #CCC;
+	text-decoration:none;
+	color:black;
+}
+#login #login-button span{
+	padding:5px;
+}

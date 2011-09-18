@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+  <bean id="navigationItem" class="com.digitalbarista.cat.model.NavigationItem"></bean>
+  
+  <bean id="navigation" class="com.digitalbarista.cat.model.Navigation">
+    <property name="clientItems">
+      <list>
+        <bean parent="navigationItem">
+          <property name="name" value="home" />
+          <property name="url" value="home" />
+          <property name="displayName" value="Home" />
+        </bean>
+        <bean parent="navigationItem">
+          <property name="name" value="messaging" />
+          <property name="url" value="messaging" />
+          <property name="displayName" value="Messaging" />
+          <property name="navigationItems">
+            <list>
+              <bean parent="navigationItem">
+			          <property name="name" value="campaign_list" />
+			          <property name="url" value="messaging/campaign_list" />
+			          <property name="displayName" value="Campaign List" />
+              </bean>
+              <bean parent="navigationItem">
+                <property name="name" value="build_campaign" />
+                <property name="url" value="messaging/build_campaign" />
+                <property name="displayName" value="Biuld Campaign" />
+              </bean>
+            </list>
+          </property>
+        </bean>
+        <bean parent="navigationItem">
+          <property name="name" value="coupons" />
+          <property name="url" value="coupons" />
+          <property name="displayName" value="Coupons" />
+        </bean>
+        <bean parent="navigationItem">
+          <property name="name" value="reporting" />
+          <property name="url" value="reporting" />
+          <property name="displayName" value="Reporting" />
+        </bean>
+        <bean parent="navigationItem">
+          <property name="name" value="account" />
+          <property name="url" value="account" />
+          <property name="displayName" value="Account" />
+        </bean>
+      </list>
+    </property>
+    <property name="adminItems">
+      <list>
+        <bean parent="navigationItem">
+          <property name="name" value="user_switcher" />
+          <property name="url" value="user_switcher" />
+          <property name="displayName" value="User Switcher" />
+        </bean>
+        <bean parent="navigationItem">
+          <property name="name" value="system_admin" />
+          <property name="url" value="system_admin" />
+          <property name="displayName" value="System Administration" />
+        </bean>
+        <bean parent="navigationItem">
+          <property name="name" value="account_admin" />
+          <property name="url" value="account_admin" />
+          <property name="displayName" value="Account Admin" />
+        </bean>
+      </list>
+    </property>
+  </bean>
+</beans>

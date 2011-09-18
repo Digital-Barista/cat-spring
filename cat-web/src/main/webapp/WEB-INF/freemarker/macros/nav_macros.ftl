@@ -1,4 +1,4 @@
-<#macro mainNavigation>
+<#macro mainNavigation navigation>
   <div id="main-nav">
     <div id="client-nav">
     	<@listNavItems navigation.clientItems />
@@ -21,8 +21,14 @@
   </#list>
 </#macro>
 
-<#macro leftNavigation>
+<#macro leftNavigation navigation>
   <div id="left-nav">
+    <div class="dynamic-content">
+      <#if navigation.selectedNavigationItem?? && navigation.selectedNavigationItem.navigationItems??>
+        <@listNavItems navigation.selectedNavigationItem.navigationItems />
+      </#if>
+    </div>
+    <div class="persistent-content">
       <ul>
         <li class="left-menu-item">
           <a href="http://digitalbarista.com">
@@ -35,5 +41,6 @@
           </a>
         </li>
       </ul>
+    </div>
   </div>
 </#macro>

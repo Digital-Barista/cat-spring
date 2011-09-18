@@ -8,16 +8,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.digitalbarista.cat.model.Navigation;
 
 @Controller
-public class MessageController extends CatController 
+public class MessagingController extends CatController 
 {
 
-	@RequestMapping(method=RequestMethod.GET, value="/message")
+	@RequestMapping(method=RequestMethod.GET, value="/messaging")
 	public ModelAndView init()
 	{
 		ModelAndView ret = super.init();
 		ret.setViewName("shell");
-//		ret.addObject("mainContent", "home.ftl");
-		setSelectedNavigation(Navigation.NAV_ITEM_ACCOUNT);
+		setSelectedNavigation(Navigation.NAV_ITEM_MESSAGING);
 		return ret;
 	}
 	
