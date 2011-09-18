@@ -7,6 +7,14 @@ public class NavigationItem
 	private String displayName;
 	private String url;
 
+	public NavigationItem(){}
+	public NavigationItem(String name, String displayName, String url)
+	{
+		this.name=name;
+		this.displayName=displayName;
+		this.url=url;
+	}
+	
 	public String getName()
   {
   	return name;
@@ -46,6 +54,44 @@ public class NavigationItem
   {
   	this.selected = selected;
   }
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((displayName == null) ? 0 : displayName.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((url == null) ? 0 : url.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NavigationItem other = (NavigationItem) obj;
+		if (displayName == null) {
+			if (other.displayName != null)
+				return false;
+		} else if (!displayName.equals(other.displayName))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equals(other.url))
+			return false;
+		return true;
+	}
 	
-	
+  
 }
