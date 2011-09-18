@@ -3,6 +3,8 @@ package com.digitalbarista.cat.controller;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.web.servlet.ModelAndView;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -11,7 +13,8 @@ import org.testng.annotations.Test;
 import com.digitalbarista.cat.model.Navigation;
 import com.digitalbarista.cat.model.NavigationItem;
 
-public class TestHomeController {
+@ContextConfiguration(locations={"/WEB-INF/cat-servlet.xml"})
+public class TestHomeController extends AbstractTestNGSpringContextTests {
 
 	private HomeController controller;
 	

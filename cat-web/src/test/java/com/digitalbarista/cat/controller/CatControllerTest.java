@@ -6,6 +6,8 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.typeCompatibleWith;
 
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.web.servlet.ModelAndView;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -14,7 +16,8 @@ import org.testng.annotations.Test;
 import com.digitalbarista.cat.model.Navigation;
 import com.digitalbarista.cat.model.NavigationItem;
 
-public class CatControllerTest {
+@ContextConfiguration(locations={"/WEB-INF/cat-servlet.xml"})
+public class CatControllerTest extends AbstractTestNGSpringContextTests {
 
 	private CatController controller;
 	
@@ -22,6 +25,7 @@ public class CatControllerTest {
 	public void setup()
 	{
 		controller=new CatController(){};
+		controller.setNavigation((Navigation)applicationContext.getBean("navigation"));
 	}
 	
 	@AfterMethod(alwaysRun=true)
