@@ -13,6 +13,7 @@ public class NavigationItemTest {
 		NavigationItem item1 = new NavigationItem("Name","Display","Url");
 		NavigationItem item2 = new NavigationItem("Name","Display","Url");
 		assertThat(item1,equalTo(item2));
+		assertThat("Hashcode is not equal when item is.",item1.hashCode(),equalTo(item2.hashCode()));
 	}
 	
 	@Test
@@ -44,6 +45,8 @@ public class NavigationItemTest {
 		item1.setSelected(false);
 		item2.setSelected(true);
 		assertThat(item1,equalTo(item2));
+		assertThat(item2,equalTo(item1));
+		assertThat("Hash code is affected by selected state, even though equals isn't.",item1.hashCode(),equalTo(item2.hashCode()));
 	}
 	
 	@Test
@@ -52,6 +55,7 @@ public class NavigationItemTest {
 		NavigationItem item1 = new NavigationItem("Name","Display","Url");
 		NavigationItem item2 = new NavigationItem("x","Display","Url");
 		assertThat(item1,not(equalTo(item2)));
+		assertThat(item2,not(equalTo(item1)));
 	}
 	@Test
 	public void testNavItemDisplayNameNotEquals()
@@ -59,6 +63,7 @@ public class NavigationItemTest {
 		NavigationItem item1 = new NavigationItem("Name","Display","Url");
 		NavigationItem item2 = new NavigationItem("Name","x","Url");
 		assertThat(item1,not(equalTo(item2)));
+		assertThat(item2,not(equalTo(item1)));
 	}
 	@Test
 	public void testNavItemUrlNotEquals()
@@ -66,6 +71,7 @@ public class NavigationItemTest {
 		NavigationItem item1 = new NavigationItem("Name","Display","Url");
 		NavigationItem item2 = new NavigationItem("Name","Display","x");
 		assertThat(item1,not(equalTo(item2)));
+		assertThat(item2,not(equalTo(item1)));
 	}
 	@Test
 	public void testNavItemNameNullNotEquals()
@@ -73,6 +79,7 @@ public class NavigationItemTest {
 		NavigationItem item1 = new NavigationItem("Name","Display","Url");
 		NavigationItem item2 = new NavigationItem(null,"Display","Url");
 		assertThat(item1,not(equalTo(item2)));
+		assertThat(item2,not(equalTo(item1)));
 	}
 	@Test
 	public void testNavItemDisplayNameNullNotEquals()
@@ -80,6 +87,7 @@ public class NavigationItemTest {
 		NavigationItem item1 = new NavigationItem("Name","Display","Url");
 		NavigationItem item2 = new NavigationItem("Name",null,"Url");
 		assertThat(item1,not(equalTo(item2)));
+		assertThat(item2,not(equalTo(item1)));
 	}
 	@Test
 	public void testNavItemUrlNullNotEquals()
@@ -87,5 +95,6 @@ public class NavigationItemTest {
 		NavigationItem item1 = new NavigationItem("Name","Display","Url");
 		NavigationItem item2 = new NavigationItem("Name","Display",null);
 		assertThat(item1,not(equalTo(item2)));
+		assertThat(item2,not(equalTo(item1)));
 	}
 }
