@@ -9,13 +9,16 @@
   <classpathentry kind="var" path="M2_REPO/org/aspectj/aspectjrt/1.6.8/aspectjrt-1.6.8.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/aspectj/aspectjweaver/1.6.8/aspectjweaver-1.6.8.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/cglib/cglib-nodep/2.2/cglib-nodep-2.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.4/commons-lang-2.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/dbdeploy/dbdeploy-core/3.0M3/dbdeploy-core-3.0M3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/easymock/easymock/3.0/easymock-3.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/freemarker/freemarker/2.3.18/freemarker-2.3.18.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-all/1.1/hamcrest-all-1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/beust/jcommander/1.12/jcommander-1.12.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/objenesis/objenesis/1.2/objenesis-1.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/yaml/snakeyaml/1.6/snakeyaml-1.6.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/3.0.6.RELEASE/spring-aop-3.0.6.RELEASE.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-asm/3.0.6.RELEASE/spring-asm-3.0.6.RELEASE.jar"/>
