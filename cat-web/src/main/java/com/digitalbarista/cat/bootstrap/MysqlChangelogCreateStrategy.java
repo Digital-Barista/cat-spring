@@ -14,7 +14,7 @@ public class MysqlChangelogCreateStrategy implements ChangelogCreateStrategy {
 		try
 		{
 			stmt = conn.createStatement();
-			stmt.execute("using "+dbName);
+			stmt.execute("use "+dbName);
 			stmt.close();
 			
 			stmt = conn.createStatement();

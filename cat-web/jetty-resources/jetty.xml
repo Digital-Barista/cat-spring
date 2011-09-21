@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+<Configure class="org.mortbay.jetty.Server">
+
+	<!--  Here's our datasource.  Notice it's XA -->
+	<New id="campaignAdmin2DS" class="org.mortbay.jetty.plus.naming.Resource">
+		<Arg></Arg>
+		<Arg>java:jdbc/campaignAdmin2DS</Arg>
+		<Arg>
+			<New class="org.apache.commons.dbcp.BasicDataSource">
+				<Set name="driverClassName">com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</Set>
+				<Set name="url">jdbc:mysql://localhost:3306/cat2</Set>
+				<Set name="username">cat2_user</Set>
+				<Set name="password">cat2_pass</Set>
+			</New>
+		</Arg>
+	</New>
+
+	<New id="rawCampaignAdmin2DS" class="org.mortbay.jetty.plus.naming.Resource">
+		<Arg></Arg>
+		<Arg>java:jdbc/rawCampaignAdmin2DS</Arg>
+		<Arg>
+			<New class="org.apache.commons.dbcp.BasicDataSource">
+				<Set name="driverClassName">com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</Set>
+				<Set name="url">jdbc:mysql://localhost:3306/</Set>
+				<Set name="username">cat2_user</Set>
+				<Set name="password">cat2_pass</Set>
+			</New>
+		</Arg>
+	</New>
+	
+	<!-- And here we set up our JTA envirionment. -->
+	<Call name="getConfiguration" class="bitronix.tm.TransactionManagerServices">
+		<Set name="serverId">jetty-btm-node0</Set>
+		<Set name="logPart1Filename">
+			<SystemProperty name="jetty.home" default="."/>/btm1.tlog
+		</Set>
+		<Set name="logPart2Filename">
+			<SystemProperty name="jetty.home" default="."/>/btm2.tlog
+		</Set>
+	</Call>
+	<Call name="addLifeCycle">
+		<Arg>
+			<New class="bitronix.tm.integration.jetty6.BTMLifeCycle"/>
+		</Arg>
+	</Call>
+	<New class="org.mortbay.jetty.plus.naming.Transaction">
+		<Arg>
+			<Call name="getTransactionManager" class="bitronix.tm.TransactionManagerServices"/>
+		</Arg>
+	</New>
+
+</Configure>

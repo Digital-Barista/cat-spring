@@ -15,15 +15,11 @@ public class MysqlDatabaseExistenceCheckStrategy implements
 		try
 		{
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("show databases");
+			rs = stmt.executeQuery("show databases like '"+dbName+"'");
 			
-			boolean exists=false;
 			while(rs.next())
 			{
-				if(dbName.equalsIgnoreCase(rs.getString(0)))
-				{
-					return true;
-				}
+				return true;
 			}
 			return false;
 		}
