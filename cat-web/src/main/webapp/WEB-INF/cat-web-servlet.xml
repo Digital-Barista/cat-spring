@@ -25,10 +25,4 @@
 	  <property name="suffix" value=".ftl"/>
 	</bean>
 
-  <bean id="catController" class="com.digitalbarista.cat.controller.CatController" abstract="true">
-    <property name="navigation" ref="navigation" />
-  </bean>
-  
-  <bean id="homeController" class="com.digitalbarista.cat.controller.HomeController" parent="catController"></bean>
-  <bean id="messagingController" class="com.digitalbarista.cat.controller.MessagingController" parent="catController"></bean>
 </beans>

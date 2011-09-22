@@ -21,12 +21,30 @@
   </#list>
 </#macro>
 
+<#macro listLeftNavItems items>
+  <ul>
+    <#list items as item>
+      <#local selectedClass = "">
+      <#if item.selected>
+        <#local selectedClass = "selected">
+      </#if>
+      <li>
+        <a href="${item.url}" class="main-menu-item ${selectedClass}">
+          <span>${item.displayName}</span>
+        </a>
+      </li>
+    </#list>
+  </ul>
+</#macro>
+
 <#macro leftNavigation navigation>
   <div id="left-nav">
     <div class="dynamic-content">
-      <#if navigation.selectedNavigationItem?? && navigation.selectedNavigationItem.navigationItems??>
-        <@listNavItems navigation.selectedNavigationItem.navigationItems />
-      </#if>
+      <#list navigation.clientItems as item>
+        <#if item.selected && item.navigationItems??>
+          <@listLeftNavItems item.navigationItems />
+        </#if>
+      </#list>
     </div>
     <div class="persistent-content">
       <ul>

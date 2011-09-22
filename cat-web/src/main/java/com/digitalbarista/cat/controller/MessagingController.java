@@ -11,12 +11,11 @@ import com.digitalbarista.cat.model.Navigation;
 public class MessagingController extends CatController 
 {
 
-	@RequestMapping(method=RequestMethod.GET, value="/messaging")
+	@RequestMapping(method=RequestMethod.GET, value=Navigation.NAV_ITEM_MESSAGING)
 	public ModelAndView init()
 	{
 		ModelAndView ret = super.init();
 		ret.setViewName("shell");
-		setSelectedNavigation(Navigation.NAV_ITEM_MESSAGING);
 		return ret;
 	}
 	

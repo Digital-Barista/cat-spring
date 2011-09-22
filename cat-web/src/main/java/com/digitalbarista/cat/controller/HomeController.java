@@ -11,13 +11,12 @@ import com.digitalbarista.cat.model.Navigation;
 public class HomeController extends CatController 
 {
 
-	@RequestMapping(method=RequestMethod.GET, value="/home")
+	@RequestMapping(method=RequestMethod.GET, value=Navigation.NAV_ITEM_HOME)
 	public ModelAndView init()
 	{
 		ModelAndView ret = super.init();
 		ret.setViewName("shell");
 		ret.addObject("mainContent", "home.ftl");
-		setSelectedNavigation(Navigation.NAV_ITEM_HOME);
 		return ret;
 	}
 	
