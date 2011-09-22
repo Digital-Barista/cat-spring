@@ -35,7 +35,10 @@ public abstract class CatController
 		{
 			for (NavigationItem item : items)
 			{
-				if (navItemName.equals(item.getUrl()))
+				String strippedUrl = item.getUrl();
+				if(strippedUrl!=null && strippedUrl.startsWith("/app/"))
+					strippedUrl=strippedUrl.substring(5);				
+				if (navItemName.equals(strippedUrl))
 				{
 					item.setSelected(true);
 					return true;

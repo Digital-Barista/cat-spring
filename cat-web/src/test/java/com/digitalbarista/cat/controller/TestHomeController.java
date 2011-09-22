@@ -55,7 +55,7 @@ public class TestHomeController extends AbstractTestNGSpringContextTests {
 		NavigationItem homeItem = null;
 		for(NavigationItem item : nav.getClientItems())
 		{
-			if(item.getName().equals(Navigation.NAV_ITEM_HOME))
+			if(item.getUrl().equals("/app/home"))
 			{
 				homeItem=item;
 				break;

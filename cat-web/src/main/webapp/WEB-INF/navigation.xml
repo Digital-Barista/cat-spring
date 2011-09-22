@@ -10,47 +10,47 @@
     <property name="clientItems">
       <list>
         <bean parent="navigationItem">
-          <property name="url" value="home" />
+          <property name="url" value="/app/home" />
           <property name="displayName" value="Home" />
         </bean>
         <bean parent="navigationItem">
-          <property name="url" value="messaging" />
+          <property name="url" value="/app/messaging" />
           <property name="displayName" value="Messaging" />
           <property name="navigationItems">
             <list>
               <bean parent="navigationItem">
-			          <property name="url" value="messaging/campaign_list" />
+			          <property name="url" value="/app/messaging/campaign_list" />
 			          <property name="displayName" value="Campaign List" />
               </bean>
               <bean parent="navigationItem">
-                <property name="url" value="messaging/build_campaign" />
+                <property name="url" value="/app/messaging/build_campaign" />
                 <property name="displayName" value="Build Campaign" />
               </bean>
               <bean parent="navigationItem">
-                <property name="url" value="messaging/broadcast" />
+                <property name="url" value="/app/messaging/broadcast" />
                 <property name="displayName" value="Broadcast Now!" />
               </bean>
               <bean parent="navigationItem">
-                <property name="url" value="messaging/tags" />
+                <property name="url" value="/app/messaging/tags" />
                 <property name="displayName" value="Tags/Links/QR Codes/Keywords" />
               </bean>
               <bean parent="navigationItem">
-                <property name="url" value="messaging/templates" />
+                <property name="url" value="/app/messaging/templates" />
                 <property name="displayName" value="Manage Templates" />
               </bean>
             </list>
           </property>
         </bean>
         <bean parent="navigationItem">
-          <property name="url" value="coupons" />
+          <property name="url" value="/app/coupons" />
           <property name="displayName" value="Coupons" />
         </bean>
         <bean parent="navigationItem">
-          <property name="url" value="reporting" />
+          <property name="url" value="/app/reporting" />
           <property name="displayName" value="Reporting" />
         </bean>
         <bean parent="navigationItem">
-          <property name="url" value="account" />
+          <property name="url" value="/app/account" />
           <property name="displayName" value="Account" />
         </bean>
       </list>
@@ -58,32 +58,32 @@
     <property name="adminItems">
       <list>
         <bean parent="navigationItem">
-          <property name="url" value="user_switcher" />
+          <property name="url" value="/app/user_switcher" />
           <property name="displayName" value="User Switcher" />
         </bean>
         <bean parent="navigationItem">
-          <property name="url" value="system_admin" />
+          <property name="url" value="/app/system_admin" />
           <property name="displayName" value="System Administration" />
         </bean>
         <bean parent="navigationItem">
-          <property name="url" value="account_admin" />
+          <property name="url" value="/app/account_admin" />
           <property name="displayName" value="Account Admin" />
           <property name="navigationItems">
             <list>
               <bean parent="navigationItem">
-                <property name="url" value="account_admin/general" />
+                <property name="url" value="/app/account_admin/general" />
                 <property name="displayName" value="General" />
               </bean>
               <bean parent="navigationItem">
-                <property name="url" value="account_admin/billing" />
+                <property name="url" value="/app/account_admin/billing" />
                 <property name="displayName" value="Billing" />
               </bean>
               <bean parent="navigationItem">
-                <property name="url" value="account_admin/users" />
+                <property name="url" value="/app/account_admin/users" />
                 <property name="displayName" value="Users/Permissions" />
               </bean>
               <bean parent="navigationItem">
-                <property name="url" value="account_admin/social_media_accounts" />
+                <property name="url" value="/app/account_admin/social_media_accounts" />
                 <property name="displayName" value="Social Media Accounts" />
               </bean>
             </list>

@@ -13,7 +13,7 @@ public class NavigationItem
 	{
 	}
 
-	public NavigationItem(String name, String displayName, String url)
+	public NavigationItem(String displayName, String url)
 	{
 		this.displayName = displayName;
 		this.url = url;

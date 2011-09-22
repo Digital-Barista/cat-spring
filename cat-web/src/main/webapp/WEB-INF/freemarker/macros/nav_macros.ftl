@@ -15,7 +15,7 @@
     <#if item.selected>
       <#local selectedClass = "selected">
     </#if>
-    <a href="${item.url}" class="main-menu-item ${selectedClass}">
+    <a href="<@spring.url item.url/>" class="main-menu-item ${selectedClass}">
       <span>${item.displayName}</span>
     </a>
   </#list>
@@ -29,7 +29,7 @@
         <#local selectedClass = "selected">
       </#if>
       <li>
-        <a href="${item.url}" class="main-menu-item ${selectedClass}">
+        <a href="<@spring.url item.url/>" class="main-menu-item ${selectedClass}">
           <span>${item.displayName}</span>
         </a>
       </li>

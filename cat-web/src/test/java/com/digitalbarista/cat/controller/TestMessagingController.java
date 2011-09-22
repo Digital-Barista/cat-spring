@@ -55,7 +55,7 @@ public class TestMessagingController extends AbstractTestNGSpringContextTests {
 		NavigationItem messagingItem = null;
 		for(NavigationItem item : nav.getClientItems())
 		{
-			if(item.getName().equals(Navigation.NAV_ITEM_MESSAGING))
+			if(item.getUrl().equals("/app/messaging"))
 			{
 				messagingItem=item;
 				break;
