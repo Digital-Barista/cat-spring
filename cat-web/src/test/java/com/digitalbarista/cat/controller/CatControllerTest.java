@@ -74,7 +74,7 @@ public class CatControllerTest extends AbstractTestNGSpringContextTests {
 		
 		for(NavigationItem item : nav.getClientItems())
 		{
-			if(item.getDisplayName().equals(Navigation.NAV_ITEM_COUPONS))
+			if(item.getDisplayName().equals(Navigation.NAV_ITEM_COUPON))
 				assertThat("Nav item Coupons was NOT selected, but SHOULD have been.",item.isSelected(),equalTo(true));
 			else
 				assertThat("Nav item "+item.getDisplayName()+" was selected, but should not have been.",item.isSelected(),equalTo(false));

@@ -42,7 +42,7 @@
           </property>
         </bean>
         <bean parent="navigationItem">
-          <property name="url" value="/app/coupons" />
+          <property name="url" value="/app/coupon" />
           <property name="displayName" value="Coupons" />
         </bean>
         <bean parent="navigationItem">
@@ -52,6 +52,26 @@
         <bean parent="navigationItem">
           <property name="url" value="/app/account" />
           <property name="displayName" value="Account" />
+          <property name="navigationItems">
+            <list>
+              <bean parent="navigationItem">
+                <property name="url" value="/app/account/contact" />
+                <property name="displayName" value="Contact Info" />
+              </bean>
+              <bean parent="navigationItem">
+                <property name="url" value="/app/account/facebook" />
+                <property name="displayName" value="Facebook Info" />
+              </bean>
+              <bean parent="navigationItem">
+                <property name="url" value="/app/account/twitter" />
+                <property name="displayName" value="Twitter Info" />
+              </bean>
+              <bean parent="navigationItem">
+                <property name="url" value="/app/account/billing" />
+                <property name="displayName" value="Billing Info" />
+              </bean>
+            </list>
+          </property>
         </bean>
       </list>
     </property>
@@ -79,11 +99,11 @@
                 <property name="displayName" value="Billing" />
               </bean>
               <bean parent="navigationItem">
-                <property name="url" value="/app/account_admin/users" />
+                <property name="url" value="/app/account_admin/user" />
                 <property name="displayName" value="Users/Permissions" />
               </bean>
               <bean parent="navigationItem">
-                <property name="url" value="/app/account_admin/social_media_accounts" />
+                <property name="url" value="/app/account_admin/social_media_account" />
                 <property name="displayName" value="Social Media Accounts" />
               </bean>
             </list>

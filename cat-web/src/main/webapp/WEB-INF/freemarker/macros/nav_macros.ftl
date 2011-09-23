@@ -40,7 +40,7 @@
 <#macro leftNavigation navigation>
   <div id="left-nav">
     <div class="dynamic-content">
-      <#list navigation.clientItems as item>
+      <#list navigation.allNavigationItems as item>
         <#if item.selected && item.navigationItems??>
           <@listLeftNavItems item.navigationItems />
         </#if>
