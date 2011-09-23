@@ -47,12 +47,17 @@ a, a:hover, a:visited, a:active{
 
 #left-nav{
   width:140px;
-  margin:10px 0px 0px 10px;
+  margin:10px;
   border-right:1px solid #CCC;
 }
 
 #left-nav .left-menu-item{
-  margin-bottom:5px;
+  padding:5px;
+  border-bottom:1px solid #CCC;
+}
+
+#left-nav .left-menu-item.selected{
+  font-weight:bold;
 }
 
 #main-content{

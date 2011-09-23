@@ -28,8 +28,8 @@
       <#if item.selected>
         <#local selectedClass = "selected">
       </#if>
-      <li>
-        <a href="<@spring.url item.url/>" class="main-menu-item ${selectedClass}">
+      <li class="left-menu-item ${selectedClass}">
+        <a href="<@spring.url item.url/>">
           <span>${item.displayName}</span>
         </a>
       </li>

@@ -11,6 +11,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.digitalbarista.cat.controller.messaging.MessagingController;
 import com.digitalbarista.cat.model.Navigation;
 import com.digitalbarista.cat.model.NavigationItem;
 

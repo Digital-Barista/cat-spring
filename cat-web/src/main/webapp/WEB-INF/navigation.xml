@@ -31,11 +31,11 @@
                 <property name="displayName" value="Broadcast Now!" />
               </bean>
               <bean parent="navigationItem">
-                <property name="url" value="/app/messaging/tags" />
+                <property name="url" value="/app/messaging/tag" />
                 <property name="displayName" value="Tags/Links/QR Codes/Keywords" />
               </bean>
               <bean parent="navigationItem">
-                <property name="url" value="/app/messaging/templates" />
+                <property name="url" value="/app/messaging/template" />
                 <property name="displayName" value="Manage Templates" />
               </bean>
             </list>
