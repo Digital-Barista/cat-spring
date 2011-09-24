@@ -1,5 +1,6 @@
 package com.digitalbarista.cat.controller.systemadmin;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +13,7 @@ import com.digitalbarista.cat.model.Navigation;
 public class SystemAdminController extends ShellController 
 {
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(method=RequestMethod.GET, value=Navigation.NAV_ITEM_SYSTEM_ADMIN)
 	public ModelAndView init()
 	{

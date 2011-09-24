@@ -1,5 +1,5 @@
-<beans:beans xmlns="http://www.springframework.org/schema/security"
-  xmlns:beans="http://www.springframework.org/schema/beans"
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:security="http://www.springframework.org/schema/security"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:jee="http://www.springframework.org/schema/jee"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -9,24 +9,78 @@
            http://www.springframework.org/schema/jee
            http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
 
-	<http auto-config="true">
-		<intercept-url pattern="/css/**" filters="none"/>
-    <intercept-url pattern="/js/**" filters="none"/>
-		<intercept-url pattern="/app/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-		<intercept-url pattern="/**" access="ROLE_USER"/>
-		<form-login login-page="/app/login" default-target-url="/app/home"/>
-	</http>
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/css/**" filters="none"/>
+    	<security:intercept-url pattern="/js/**" filters="none"/>
+		<security:intercept-url pattern="/app/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<security:intercept-url pattern="/**" access="ROLE_USER"/>
+		<security:form-login login-page="/app/login" default-target-url="/app/home"/>
+	</security:http>
 
+    <bean id="expressionHandler" class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
+        <property name="permissionEvaluator" ref="permissionEvaluator"/>
+    </bean>
+
+    <bean id="permissionEvaluator" class="org.springframework.security.acls.AclPermissionEvaluator">
+        <constructor-arg ref="aclService"/>
+    </bean>
+    
+	<security:global-method-security pre-post-annotations="enabled">
+		<security:expression-handler ref="expressionHandler"/>
+	</security:global-method-security>
+	
 	<jee:jndi-lookup id="cat2-ds" jndi-name="java:jdbc/campaignAdmin2DS"/>
 
-	<beans:bean id="cat-salt" class="com.digitalbarista.cat.util.CATSaltSource"/>
+	<bean id="cat-salt" class="com.digitalbarista.cat.util.CATSaltSource"/>
 
-	<authentication-manager>
-		<authentication-provider>
-			<password-encoder hash="sha">
-				<salt-source ref="cat-salt"/>
-			</password-encoder>
-			<jdbc-user-service data-source-ref="cat2-ds"/>
-		</authentication-provider>
-	</authentication-manager>
-</beans:beans>
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:password-encoder hash="sha">
+				<security:salt-source ref="cat-salt"/>
+			</security:password-encoder>
+			<security:jdbc-user-service data-source-ref="cat2-ds"/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+  <bean id="aclCache" class="org.springframework.security.acls.domain.EhCacheBasedAclCache">
+    <constructor-arg>
+      <bean class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheManager">
+          <bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"/>
+        </property>
+        <property name="cacheName" value="aclCache"/>
+      </bean>
+    </constructor-arg>
+  </bean>
+
+  <bean id="lookupStrategy" class="org.springframework.security.acls.jdbc.BasicLookupStrategy">
+    <constructor-arg ref="cat2-ds"/>
+    <constructor-arg ref="aclCache"/>
+    <constructor-arg>
+        <bean class="org.springframework.security.acls.domain.AclAuthorizationStrategyImpl">
+            <constructor-arg>
+            <list>
+                <bean class="org.springframework.security.core.authority.GrantedAuthorityImpl">
+                    <constructor-arg value="ROLE_ADMINISTRATOR"/>
+                </bean>
+                <bean class="org.springframework.security.core.authority.GrantedAuthorityImpl">
+                    <constructor-arg value="ROLE_ADMINISTRATOR"/>
+                </bean>
+                <bean class="org.springframework.security.core.authority.GrantedAuthorityImpl">
+                    <constructor-arg value="ROLE_ADMINISTRATOR"/>
+                </bean>
+            </list>
+            </constructor-arg>
+        </bean>
+    </constructor-arg>
+    <constructor-arg>
+      <bean class="org.springframework.security.acls.domain.ConsoleAuditLogger"/>
+    </constructor-arg>
+  </bean>
+
+  <bean id="aclService" class="org.springframework.security.acls.jdbc.JdbcMutableAclService">
+    <constructor-arg ref="cat2-ds"/>
+    <constructor-arg ref="lookupStrategy"/>
+    <constructor-arg ref="aclCache"/>
+  </bean>
+</beans>

@@ -3,6 +3,8 @@ package com.digitalbarista.cat.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.access.prepost.PostFilter;
+
 public class Navigation
 {
 	public static final String NAV_ITEM_HOME = "home";
@@ -44,6 +46,7 @@ public class Navigation
 		this.clientItems = clientItems;
 	}
 
+	@PostFilter("hasRole('ROLE_ADMIN')") //Note that this ONLY affects what nav options are displayed, NOT actual security restrictions.
 	public List<NavigationItem> getAdminItems()
 	{
 		return adminItems;
