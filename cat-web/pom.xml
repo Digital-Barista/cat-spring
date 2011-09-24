@@ -98,6 +98,19 @@
    		<type>jar</type>
    		<scope>test</scope>
    	</dependency>
+   	<dependency>
+   		<groupId>org.springframework</groupId>
+   		<artifactId>spring-jdbc</artifactId>
+   		<version>3.0.6.RELEASE</version>
+   		<type>jar</type>
+   		<scope>compile</scope>
+   	</dependency>
+   	<dependency>
+   		<groupId>log4j</groupId>
+   		<artifactId>log4j</artifactId>
+   		<version>1.2.16</version>
+   		<scope>compile</scope>
+   	</dependency>
   </dependencies>
   <build>
 	  <plugins>
@@ -105,6 +118,12 @@
 	        <groupId>org.mortbay.jetty</groupId>
 	        <artifactId>maven-jetty-plugin</artifactId>
 	        <configuration>
+	          <systemProperties>
+	          	<systemProperty>
+	          		<name>log4j.configuration</name>
+	          		<value>file:${basedir}/jetty-resources/log4j.xml</value>
+	          	</systemProperty>
+	          </systemProperties>
          	  <scanIntervalSeconds>10</scanIntervalSeconds>
          	  <webAppConfig>
          	  	<contextPath>/cat2</contextPath>

@@ -1,10 +1,13 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
   xmlns:beans="http://www.springframework.org/schema/beans"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jee="http://www.springframework.org/schema/jee"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
            http://www.springframework.org/schema/security
-           http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+           http://www.springframework.org/schema/security/spring-security-3.0.xsd
+           http://www.springframework.org/schema/jee
+           http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
 
 	<http auto-config="true">
 		<intercept-url pattern="/css/**" filters="none"/>
@@ -14,12 +17,16 @@
 		<form-login login-page="/app/login" default-target-url="/app/home"/>
 	</http>
 
+	<jee:jndi-lookup id="cat2-ds" jndi-name="java:jdbc/campaignAdmin2DS"/>
+
+	<beans:bean id="cat-salt" class="com.digitalbarista.cat.util.CATSaltSource"/>
+
 	<authentication-manager>
 		<authentication-provider>
-			<user-service>
-				<user name="admin" password="admin" authorities="ROLE_ADMIN,ROLE_USER"/>
-				<user name="user" password="user" authorities="ROLE_USER"/>
-			</user-service>
+			<password-encoder hash="sha">
+				<salt-source ref="cat-salt"/>
+			</password-encoder>
+			<jdbc-user-service data-source-ref="cat2-ds"/>
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>
