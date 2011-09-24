@@ -7,6 +7,10 @@ import org.springframework.security.access.prepost.PostFilter;
 
 public class Navigation
 {
+
+	public static final String NAV_ITEM_LOGIN = "login";
+	public static final String NAV_ITEM_LOGOUT = "logout";
+	
 	public static final String NAV_ITEM_HOME = "home";
 	
 	public static final String NAV_ITEM_MESSAGING = "messaging";

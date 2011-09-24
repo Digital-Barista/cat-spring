@@ -5,6 +5,9 @@
     </div>
     <div id="admin-nav">
     	<@listNavItems navigation.adminItems />
+	    <a id="logout" href="<@spring.url '/app/logout'/>" class="main-menu-item">
+	      <span>Logout</span>
+	    </a>
     </div>
   </div>
 </#macro>

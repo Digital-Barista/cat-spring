@@ -1,7 +1,11 @@
 <#import "spring.ftl" as spring/>
+
+<#include "macros/common_macros.ftl" />
+
 <html>
 <head>
   <title>Login Page</title>
+  <link type="text/css" href="<@spring.url '/css/main.css'/>" rel="stylesheet" />
   <link type="text/css" href="<@spring.url '/css/login.css'/>" rel="stylesheet" />
   <script src="<@spring.url '/js/jquery-1.6.4.min.js' />"></script>
   <script>
@@ -38,9 +42,7 @@
       <div class="label">Password:</div><input type="password" id="password" name="j_password"/>
     </div>
     <div class="buttons">
-      <a id="login-button" href="javascript:void(0)">
-        <span>Login</span>
-      </a>
+    	<@button id="login-button" href="javascript:void(0)" text="Login" />
     </div>
   </form>
   <div style="clear:both;"></div>

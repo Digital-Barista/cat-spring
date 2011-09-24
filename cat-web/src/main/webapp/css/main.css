@@ -66,3 +66,17 @@ a, a:hover, a:visited, a:active{
 	left:150px;
 	padding:0px 10px;
 }
+
+.button{
+	border:1px solid #ccc;
+}
+.button:hover{
+	background:#eee;
+}
+
+.button .button-content {
+}
+
+.button .button-text {
+	padding:5px 10px;
+}

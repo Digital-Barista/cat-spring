@@ -5,7 +5,9 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.DriverPropertyInfo;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -58,5 +60,11 @@ public class WrapperDriver implements Driver {
 
 	public boolean jdbcCompliant() {
 		return true;
+	}
+
+	public Logger getParentLogger() throws SQLFeatureNotSupportedException
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
