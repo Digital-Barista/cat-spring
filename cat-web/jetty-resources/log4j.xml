@@ -8,11 +8,16 @@
 	</appender>
 	<appender name="FA" class="org.apache.log4j.FileAppender">
 		<param name="File" value="jetty-app.log"/>
-		<param name="Threshold" value="WARN"/>
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%-4r [%t] %-5p %c %x - %m%n" />
 		</layout>
 	</appender>
+	<logger name="org.springframework">
+		<level value="WARN"/>
+	</logger>
+	<logger name="com.digitalbarista">
+		<level value="WARN"/>
+	</logger>
 	<root>
 		<level value="WARN" />
 		<appender-ref ref="CA" />

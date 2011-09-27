@@ -14,4 +14,9 @@ public class LoginController {
 		return "login";
 	}
 	
+	@RequestMapping(value=Navigation.NAV_ITEM_LOGIN+"/afterlogout")
+	public String goToRelogin()
+	{
+		return "logout";
+	}
 }

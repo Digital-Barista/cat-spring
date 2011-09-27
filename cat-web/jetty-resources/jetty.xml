@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
-<Configure class="org.mortbay.jetty.Server">
-
+<Configure id="jettyServer" class="org.mortbay.jetty.Server">
 	<!--  Here's our datasource.  Notice it's XA -->
 	<New id="campaignAdmin2DS" class="org.mortbay.jetty.plus.naming.Resource">
 		<Arg></Arg>

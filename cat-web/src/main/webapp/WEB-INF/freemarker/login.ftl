@@ -34,7 +34,7 @@
     Sign In
   </div>
   
-  <form id="login-form" name="login-form" action="<@spring.url "/j_spring_security_check"/>" method="POST"> 
+  <form id="login-form" name="login-form" action="<@spring.url "/app/j_spring_security_check"/>" method="POST"> 
     <div class="username">
       <div class="label">Username:</div><input type="text" id="username" name="j_username" >
     </div>

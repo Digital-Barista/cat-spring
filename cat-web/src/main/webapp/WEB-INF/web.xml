@@ -13,7 +13,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
 	
-	<listener>
+ 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
@@ -33,6 +33,19 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/cat-web-servlet.xml
 						 /WEB-INF/navigation.xml
+						 /WEB-INF/cat-dao.xml
+						 /WEB-INF/spring-security.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>cat-api</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/cat-api-servlet.xml
+						 /WEB-INF/cat-dao.xml
 						 /WEB-INF/spring-security.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
@@ -42,5 +55,9 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 		<servlet-name>cat-web</servlet-name>
 		<url-pattern>/app/*</url-pattern>
 	</servlet-mapping>
-	
+
+	<servlet-mapping>
+		<servlet-name>cat-api</servlet-name>
+		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>	
 </web-app>

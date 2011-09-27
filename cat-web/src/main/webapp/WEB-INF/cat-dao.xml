@@ -1,0 +1,40 @@
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+  	xmlns:jee="http://www.springframework.org/schema/jee"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd                           
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/jee
+        http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+
+	<bean id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>
+	
+	<tx:annotation-driven transaction-manager="txManager"/>
+
+	<jee:jndi-lookup id="cat2-ds" jndi-name="java:jdbc/campaignAdmin2DS"/>
+        
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    	<property name="dataSource" ref="cat2-ds"/>
+		<property name="hibernateProperties">
+	      <value>
+	        hibernate.dialect=org.hibernate.dialect.MySQLDialect
+	      </value>
+	  	</property>
+	  	<property name="packagesToScan">
+	  		<list>
+	  			<value>com.digitalbarista.cat.data.*</value>
+	  			<value>com.digitalbarista.cat.data</value>
+	  		</list>
+	  	</property>
+    </bean>
+</beans>

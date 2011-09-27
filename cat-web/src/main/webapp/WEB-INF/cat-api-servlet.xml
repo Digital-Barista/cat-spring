@@ -13,17 +13,26 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
   
-	<context:component-scan base-package="com.digitalbarista.cat.controller"/>
+	<context:component-scan base-package="com.digitalbarista.cat.api"/>
 	<context:component-scan base-package="com.digitalbarista.cat.dao"/>
 	
-	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-	  <property name="templateLoaderPath" value="/WEB-INF/freemarker/"/>
+	<bean id="serviceViewResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1"/>
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+      			<entry key="xml" value="application/xml" />
+			</map>
+		</property>
+		<property name="defaultViews">
+    		<list>
+      			<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+		        <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+        			<constructor-arg>
+          				<bean class="org.springframework.oxm.xstream.XStreamMarshaller" />
+			        </constructor-arg>
+      			</bean>
+    		</list>
+  		</property>
 	</bean>
-	
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-	  <property name="cache" value="true"/>
-	  <property name="prefix" value=""/>
-	  <property name="suffix" value=".ftl"/>
-	</bean>
-
 </beans>
