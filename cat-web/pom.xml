@@ -179,7 +179,6 @@
    		<artifactId>xstream-hibernate</artifactId>
    		<version>1.4.1</version>
    		<type>jar</type>
-   		<scope>runtime</scope>
    	</dependency>
    	<dependency>
    		<groupId>javassist</groupId>
