@@ -19,7 +19,7 @@ import com.digitalbarista.cat.model.NavigationItem;
 
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/cat-web-servlet.xml",
 								 "file:src/main/webapp/WEB-INF/navigation.xml",
-								 "classpath:test-dao.xml"})
+								 "file:src/test/resources/test-dao.xml"})
 public class CatControllerTest extends AbstractTestNGSpringContextTests {
 
 	@Test

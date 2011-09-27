@@ -29,7 +29,18 @@
       			<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
 		        <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
         			<constructor-arg>
-          				<bean class="org.springframework.oxm.xstream.XStreamMarshaller" />
+          				<bean class="org.springframework.oxm.xstream.XStreamMarshaller">
+          					<property name="annotatedClasses">
+          						<list>
+          							<value>com.digitalbarista.cat.data.Client</value>
+          						</list>
+          					</property>
+          					<property name="aliases">
+          						<map>
+          							<entry key="list" value="java.util.List"/>
+          						</map>
+          					</property>
+          				</bean>
 			        </constructor-arg>
       			</bean>
     		</list>
