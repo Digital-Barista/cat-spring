@@ -16,6 +16,35 @@
 	<context:component-scan base-package="com.digitalbarista.cat.api"/>
 	<context:component-scan base-package="com.digitalbarista.cat.dao"/>
 	
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	    <property name="messageConverters">
+	      <list>
+	        <ref bean="XmlConverter"/>
+	        <ref bean="JSONConverter"/>
+	      </list>
+	    </property>
+	</bean>
+
+	<bean id="XStreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
+		<property name="annotatedClasses">
+			<list>
+				<value>com.digitalbarista.cat.data.Client</value>
+			</list>
+		</property>
+		<property name="aliases">
+			<map>
+				<entry key="list" value="java.util.List"/>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="XmlConverter" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+		<property name="marshaller" ref="XStreamMarshaller"/>
+		<property name="unmarshaller" ref="XStreamMarshaller"/>
+	</bean>
+	
+	<bean id="JSONConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+	
 	<bean id="serviceViewResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="order" value="1"/>
 		<property name="mediaTypes">
@@ -29,18 +58,7 @@
       			<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
 		        <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
         			<constructor-arg>
-          				<bean class="org.springframework.oxm.xstream.XStreamMarshaller">
-          					<property name="annotatedClasses">
-          						<list>
-          							<value>com.digitalbarista.cat.data.Client</value>
-          						</list>
-          					</property>
-          					<property name="aliases">
-          						<map>
-          							<entry key="list" value="java.util.List"/>
-          						</map>
-          					</property>
-          				</bean>
+						<ref bean="XStreamMarshaller"/>
 			        </constructor-arg>
       			</bean>
     		</list>
