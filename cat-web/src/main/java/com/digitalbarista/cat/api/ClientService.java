@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.digitalbarista.cat.dao.ClientDao;
 import com.digitalbarista.cat.data.Client;
 
-@Service("/clients")
+@Service("/clients*")  //The * is necessary for extension type mapping.
 @Transactional
 public class ClientService {
 	
