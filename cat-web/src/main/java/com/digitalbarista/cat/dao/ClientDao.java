@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,7 @@ import com.digitalbarista.cat.data.Client;
 public class ClientDao {
 
 	@Autowired
+	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
 	
 	@PreAuthorize("hasPermission(#id,'com.digitalbarista.cat.data.Client','read') or hasRole('ROLE_ADMIN')")

@@ -17,9 +17,9 @@ import org.testng.annotations.Test;
 import com.digitalbarista.cat.model.Navigation;
 import com.digitalbarista.cat.model.NavigationItem;
 
-@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/cat-web-servlet.xml",
-								 "file:src/main/webapp/WEB-INF/navigation.xml",
-								 "file:src/test/resources/test-dao.xml"})
+@ContextConfiguration(locations={"file:src/test/resources/test-dao.xml",
+								  "file:src/main/webapp/WEB-INF/cat-web-servlet.xml",
+								 "file:src/main/webapp/WEB-INF/navigation.xml"})
 public class CatControllerTest extends AbstractTestNGSpringContextTests {
 
 	@Test
