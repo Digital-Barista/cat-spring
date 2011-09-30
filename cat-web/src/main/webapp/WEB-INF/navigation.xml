@@ -86,7 +86,7 @@
           <property name="displayName" value="System Administration" />
         </bean>
         <bean parent="navigationItem">
-          <property name="url" value="/app/account_admin" />
+          <property name="url" value="/app/account_admin/general" />
           <property name="displayName" value="Account Admin" />
           <property name="navigationItems">
             <list>

@@ -67,6 +67,10 @@ a, a:hover, a:visited, a:active{
 	padding:0px 10px;
 }
 
+.spacer{
+  clear:both;
+}
+
 .button{
 	border:1px solid #ccc;
 }
@@ -79,4 +83,24 @@ a, a:hover, a:visited, a:active{
 
 .button .button-text {
 	padding:5px 10px;
+}
+
+.label{
+  width:100px;
+  display:inline-block;
+  text-align:right;
+  padding:5px;
+}
+
+#account-container{
+  position:relative;
+}
+#account-container .address, 
+#account-container .contact-info{
+  float:left;
+}
+#account-container #create-button{
+  position:absolute;
+  bottom:0px;
+  right:0px;
 }

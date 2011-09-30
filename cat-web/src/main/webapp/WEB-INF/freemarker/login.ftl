@@ -7,7 +7,7 @@
   <title>Login Page</title>
   <link type="text/css" href="<@spring.url '/css/main.css'/>" rel="stylesheet" />
   <link type="text/css" href="<@spring.url '/css/login.css'/>" rel="stylesheet" />
-  <script src="<@spring.url '/js/jquery-1.6.4.min.js' />"></script>
+  <script src="<@spring.url '/js/lib/jquery-1.6.4.min.js' />"></script>
   <script>
     $(document).ready(function(){
       var form = $('form');

@@ -7,7 +7,16 @@
     <link type="text/css" href="<@spring.url '/css/main.css'/>" rel="stylesheet" />
   	<!-- or, instead of using the spring macro, you can hard link to /cat/css/main.css'-->
 	<!-- BUT . . . the macro will automatically cope with a different context root. -->
-    <script src="<@spring.url '/js/jquery-1.6.4.min.js' />"></script>
+	
+    <#-- Shared scripts -->
+    <script src="<@spring.url '/js/lib/jquery-1.6.4.min.js' />"></script>
+    <script src="<@spring.url '/js/lib/jquery.event.drag-2.0.min.js' />"></script>
+    <script src="<@spring.url '/js/lib/slick.core.js' />"></script>
+    <script src="<@spring.url '/js/lib/slick.grid.js' />"></script>
+    <script src="<@spring.url '/js/lib/class.js' />"></script>
+    <script src="<@spring.url '/js/shell.js' />"></script>
+    <script src="<@spring.url '/js/client.js' />"></script>
+    
   </head>
   <body>
     <div id="body-wrapper">
@@ -26,6 +35,7 @@
         	<#include mainContent />
         </#if>
       </div>
-    </diiv>
+    </div>
+    
   </body>
 </html>
