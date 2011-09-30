@@ -93,6 +93,7 @@
 	  <property name="authenticationSuccessHandler">
 	  	<bean class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
 	  		<property name="defaultTargetUrl" value="/app/home"/>
+			<property name="alwaysUseDefaultTargetUrl" value="true"/>
 	  	</bean>
 	  </property>
 	</bean> 
@@ -119,9 +120,7 @@
 	  <property name="realmName" value="CAT API"/>
 	</bean>
 	
-	<bean id="accessDeniedHandler" class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-	  <property name="errorPage" value="/app/denied"/>
-	</bean>
+	<bean id="accessDeniedHandler" class="org.springframework.security.web.access.AccessDeniedHandlerImpl"/>
 	
 	<bean id="AppExceptionTranslationFilter" class="org.springframework.security.web.access.ExceptionTranslationFilter">
 	  <property name="authenticationEntryPoint" ref="formAuthenticationEntryPoint"/>
