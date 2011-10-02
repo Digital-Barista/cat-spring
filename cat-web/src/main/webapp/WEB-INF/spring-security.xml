@@ -3,11 +3,11 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:jee="http://www.springframework.org/schema/jee"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
            http://www.springframework.org/schema/security
-           http://www.springframework.org/schema/security/spring-security-3.0.xsd
+           http://www.springframework.org/schema/security/spring-security-3.1.xsd
            http://www.springframework.org/schema/jee
-           http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+           http://www.springframework.org/schema/jee/spring-jee-3.1.xsd">
 
 <!-- 	<security:http auto-config="true">
 		<security:intercept-url pattern="/css/**" filters="none"/>
@@ -22,7 +22,7 @@
 
 	<bean id="AppFilterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
 	  <property name="authenticationManager" ref="authenticationManager"/>
-	  <property name="accessDecisionManager" ref="accessDecisionManager"/>
+	  <property name="accessDecisionManager" ref="webAccessDecisionManager"/>
 	  <property name="securityMetadataSource">
 	    <security:filter-security-metadata-source>
 			<security:intercept-url pattern="/app/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
@@ -34,7 +34,7 @@
 
 	<bean id="ApiFilterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
 	  <property name="authenticationManager" ref="authenticationManager"/>
-	  <property name="accessDecisionManager" ref="accessDecisionManager"/>
+	  <property name="accessDecisionManager" ref="webAccessDecisionManager"/>
 	  <property name="securityMetadataSource">
 	    <security:filter-security-metadata-source>
 			<security:intercept-url pattern="/**" access="ROLE_API_USER,ROLE_ADMIN"/>
@@ -46,9 +46,9 @@
 	<bean id="filterChainProxy" class="org.springframework.security.web.FilterChainProxy">
 		<security:filter-chain-map path-type="ant">
 			<security:filter-chain  pattern="/app/**" filters="AppSecurityContextPersistenceFilter,
+															   LogoutFilter,
 															   LoginPageAuthenticationFilter,
 															   AnonymousAuthFilter,
-															   RequestCacheAwareFilter,
 															   SessionManagementFilter,
 															   AppExceptionTranslationFilter,
 															   AppFilterSecurityInterceptor"/>
@@ -59,7 +59,7 @@
 		</security:filter-chain-map>
 	</bean>
 
-	<bean id="logoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
+	<bean id="LogoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
 	    <constructor-arg value="/app/login/afterlogout" />
 	    <constructor-arg>
 	        <list><bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler" /></list>
@@ -142,16 +142,27 @@
         <constructor-arg ref="aclService"/>
     </bean>
     
-	<security:global-method-security pre-post-annotations="enabled" access-decision-manager-ref="accessDecisionManager">
-		<security:expression-handler ref="expressionHandler"/>
-	</security:global-method-security>
-	
 	<jee:jndi-lookup id="cat2-ds" jndi-name="java:jdbc/campaignAdmin2DS"/>
 
 	<bean id="cat-salt" class="com.digitalbarista.cat.util.CATSaltSource"/>
 
-	<bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
-		<property name="allowIfAllAbstainDecisions" value="true"/>
+	<bean id="preInvocationAdvice" class="org.springframework.security.access.expression.method.ExpressionBasedPreInvocationAdvice">
+		<property name="expressionHandler" ref="expressionHandler"/>
+	</bean>
+
+	<bean id="methodAccessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+		<property name="decisionVoters">
+			<list>
+				<bean class="org.springframework.security.access.prepost.PreInvocationAuthorizationAdviceVoter">
+					<constructor-arg>
+						<ref bean="preInvocationAdvice"/>
+					</constructor-arg>
+				</bean>			
+			</list>
+		</property>
+	</bean>
+
+	<bean id="webAccessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
 	    <property name="decisionVoters">
 	        <list>
 	            <bean class="org.springframework.security.access.vote.RoleVoter"/>

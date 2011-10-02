@@ -10,9 +10,7 @@
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-webmvc</artifactId>
-  		<version>3.0.6.RELEASE</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
+  		<version>3.1.0.M2</version>
   	</dependency>
   	<dependency>
   		<groupId>org.freemarker</groupId>
@@ -24,16 +22,12 @@
   	<dependency>
   		<groupId>org.springframework.security</groupId>
   		<artifactId>spring-security-config</artifactId>
-  		<version>3.0.7.RELEASE</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
+  		<version>3.1.0.M2</version>
   	</dependency>
   	<dependency>
   		<groupId>org.springframework.security</groupId>
   		<artifactId>spring-security-web</artifactId>
-  		<version>3.0.7.RELEASE</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
+  		<version>3.1.0.M2</version>
   	</dependency>
   	<dependency>
   		<groupId>com.dbdeploy</groupId>
@@ -66,8 +60,7 @@
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-test</artifactId>
-  		<version>3.0.6.RELEASE</version>
-  		<type>jar</type>
+  		<version>3.1.0.M2</version>
   		<scope>test</scope>
   	</dependency>
   	<dependency>
@@ -101,9 +94,7 @@
    	<dependency>
    		<groupId>org.springframework</groupId>
    		<artifactId>spring-jdbc</artifactId>
-   		<version>3.0.6.RELEASE</version>
-   		<type>jar</type>
-   		<scope>compile</scope>
+   		<version>3.1.0.M2</version>
    	</dependency>
    	<dependency>
    		<groupId>log4j</groupId>
@@ -114,16 +105,12 @@
    	<dependency>
    		<groupId>org.springframework.security</groupId>
    		<artifactId>spring-security-acl</artifactId>
-   		<version>3.0.7.RELEASE</version>
-   		<type>jar</type>
-   		<scope>compile</scope>
+   		<version>3.1.0.M2</version>
    	</dependency>
    	<dependency>
    		<groupId>org.springframework</groupId>
    		<artifactId>spring-expression</artifactId>
-   		<version>3.0.6.RELEASE</version>
-   		<type>jar</type>
-   		<scope>compile</scope>
+   		<version>3.1.0.M2</version>
    	</dependency>
    	<dependency>
    		<groupId>net.sf.ehcache</groupId>
@@ -142,9 +129,7 @@
    	<dependency>
    		<groupId>org.springframework</groupId>
    		<artifactId>spring-orm</artifactId>
-   		<version>3.0.6.RELEASE</version>
-   		<type>jar</type>
-   		<scope>compile</scope>
+   		<version>3.1.0.M2</version>
    	</dependency>
    	<dependency>
    		<groupId>org.hibernate</groupId>
@@ -170,8 +155,7 @@
    	<dependency>
    		<groupId>org.springframework</groupId>
    		<artifactId>spring-oxm</artifactId>
-   		<version>3.0.6.RELEASE</version>
-   		<type>jar</type>
+   		<version>3.1.0.M2</version>
    		<scope>runtime</scope>
    	</dependency>
    	<dependency>
@@ -271,6 +255,18 @@
   			<enabled>false</enabled>
   		</snapshots>
   		<url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+  	</repository>
+  	<repository>
+  		<id>spring-milestone</id>
+  		<layout>default</layout>
+  		<name>Spring Milestone Relase Repository</name>
+  		<releases>
+  			<enabled>true</enabled>
+  		</releases>
+  		<snapshots>
+  			<enabled>false</enabled>
+  		</snapshots>
+  		<url>http://maven.springframework.org/milestone</url>
   	</repository>
   </repositories>
 </project>

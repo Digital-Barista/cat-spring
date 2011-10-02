@@ -27,7 +27,7 @@ public class ClientDao {
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRED)
-	@PreAuthorize("((client.id==null) and hasRole('ROLE_ADMIN')) or hasPermission(#client,'write')")
+	@PreAuthorize("((#client.id==null) and hasRole('ROLE_ADMIN')) or hasPermission(#client,'write')")
 	public Client save(Client client)
 	{
 		sessionFactory.getCurrentSession().save(client);

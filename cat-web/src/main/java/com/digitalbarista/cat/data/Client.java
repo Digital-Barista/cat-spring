@@ -9,11 +9,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Proxy;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("Client")
 @Entity
 @Table(name="client")
+@Proxy(lazy=false)
 public class Client {
 
 	@Id
