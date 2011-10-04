@@ -32,4 +32,5 @@
 	  <property name="suffix" value=".ftl"/>
 	</bean>
 
+	<bean id="appContextProvider" class="com.digitalbarista.cat.util.ApplicationContextProvider"/>
 </beans>

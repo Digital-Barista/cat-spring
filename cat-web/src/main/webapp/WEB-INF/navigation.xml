@@ -10,7 +10,7 @@
  
   <bean id="navigationItem" class="com.digitalbarista.cat.model.NavigationItem" abstract="true"/>
   
-  <bean id="navigation" class="com.digitalbarista.cat.model.Navigation">
+  <bean id="navigation" class="com.digitalbarista.cat.model.Navigation" scope="request" autowire-candidate="false">
     <property name="clientItems">
       <list>
         <bean parent="navigationItem">

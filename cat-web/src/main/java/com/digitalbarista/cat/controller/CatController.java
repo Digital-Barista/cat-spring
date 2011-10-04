@@ -11,18 +11,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.digitalbarista.cat.model.Navigation;
 import com.digitalbarista.cat.model.NavigationItem;
+import com.digitalbarista.cat.util.ApplicationContextProvider;
 
 @Controller
 public abstract class CatController
 {
+
 	@Autowired
-	private Navigation navigation;
+	private ApplicationContextProvider ctxProvider;
 
 	protected ModelAndView init()
 	{
 		ModelAndView ret = new ModelAndView();
-		ret.addObject("navigation", navigation);
-		setSelectedNavigation(navigation.getAllNavigationItems());
+		ret.addObject("navigation", getNavigation());
+		setSelectedNavigation(getNavigation().getAllNavigationItems());
 		return ret;
 	}
 	
@@ -79,12 +81,6 @@ public abstract class CatController
 	
 	public Navigation getNavigation()
   {
-  	return navigation;
+	  return this.ctxProvider.getApplicationContext().getBean(Navigation.class);
   }
-
-	public void setNavigation(Navigation navigation)
-  {
-  	this.navigation = navigation;
-  }
-	
 }
