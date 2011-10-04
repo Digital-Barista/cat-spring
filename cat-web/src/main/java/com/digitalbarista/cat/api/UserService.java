@@ -12,31 +12,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.digitalbarista.cat.dao.ClientDao;
+import com.digitalbarista.cat.dao.UserDao;
 import com.digitalbarista.cat.data.Client;
+import com.digitalbarista.cat.data.User;
 
 @Controller
 @Transactional
-public class ClientService {
+public class UserService {
 	
 	@Autowired
-	private ClientDao clientDao;
+	private UserDao userDao;
 	
-	@RequestMapping(value="/clients",method={RequestMethod.GET})
-	public List<Client> getAllClients()
+	@RequestMapping(value="/users",method={RequestMethod.GET})
+	public List<User> getAllUsers()
 	{
-		return clientDao.getAllClients();
+		return userDao.getAllUsers();
 	}
 	
-	@RequestMapping(value="/clients/{id}",method={RequestMethod.GET})
-	public Client getClient(@PathVariable long id)
+	@RequestMapping(value="/users/{username}",method={RequestMethod.GET})
+	public User getUser(@PathVariable String username)
 	{
-		return clientDao.getClient(id);
+		return userDao.getUser(username);
 	}
 	
-	@RequestMapping(value="/clients",method={RequestMethod.POST})
-	public Client saveClient(@RequestBody @Valid Client client)
+	@RequestMapping(value="/users",method={RequestMethod.POST})
+	public User saveUser(@RequestBody @Valid User user)
 	{
-		return clientDao.save(client);
+		return userDao.save(user);
 	}
 }

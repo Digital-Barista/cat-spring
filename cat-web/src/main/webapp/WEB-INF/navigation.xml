@@ -8,10 +8,9 @@
   http://www.springframework.org/schema/aop
   http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
  
-  <bean id="navigationItem" class="com.digitalbarista.cat.model.NavigationItem"></bean>
+  <bean id="navigationItem" class="com.digitalbarista.cat.model.NavigationItem" abstract="true"/>
   
-  <bean id="navigation" class="com.digitalbarista.cat.model.Navigation" scope="prototype">
-  	<aop:scoped-proxy/>
+  <bean id="navigation" class="com.digitalbarista.cat.model.Navigation">
     <property name="clientItems">
       <list>
         <bean parent="navigationItem">

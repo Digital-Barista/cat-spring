@@ -1,0 +1,6 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd"
+    maxBytesLocalHeap="128M" maxBytesLocalDisk="1g">
+    <cache name="clientCache" eternal="true"/>
+    <cache name="clientListCache" eternal="true"/>
+    <cache name="clientObjectIDCache" eternal="true"/>
+</ehcache>

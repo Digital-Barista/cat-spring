@@ -33,7 +33,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/cat-web-servlet.xml
 						 /WEB-INF/navigation.xml
-						 /WEB-INF/cat-dao.xml</param-value>
+					 	 /WEB-INF/cat-dao.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -44,7 +44,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/cat-api-servlet.xml
-						 /WEB-INF/cat-dao.xml</param-value>
+					     /WEB-INF/cat-dao.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
