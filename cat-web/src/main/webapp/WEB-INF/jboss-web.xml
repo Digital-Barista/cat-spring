@@ -1,11 +1,4 @@
 <jboss-web>
-	<class-loading java2ClassLoadingCompliance="false">
-        <loader-repository>
-            com.digitalbarista.cat2:loader=cat2.war
-            <loader-repository-config>
-                java2ParentDelegation=false
-            </loader-repository-config>
-        </loader-repository>
-    </class-loading>
+	<class-loading java2ClassLoadingCompliance="false"/>
     <context-root>cat2</context-root>
 </jboss-web>
