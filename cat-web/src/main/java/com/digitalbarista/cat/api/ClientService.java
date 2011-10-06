@@ -1,6 +1,7 @@
 package com.digitalbarista.cat.api;
 
-import org.hibernate.validator.Valid;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,8 +34,7 @@ public class ClientService {
 	}
 	
 	@RequestMapping(value="/clients",method={RequestMethod.POST})
-	@Valid
-	public Client saveClient(@RequestBody Client client)
+	public Client saveClient(@RequestBody @Valid Client client)
 	{
 		return clientDao.save(client);
 	}
