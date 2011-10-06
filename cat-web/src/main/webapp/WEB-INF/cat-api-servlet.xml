@@ -38,6 +38,8 @@
 				<value>com.digitalbarista.cat.data.Client</value>
 				<value>com.digitalbarista.cat.data.User</value>
 				<value>com.digitalbarista.cat.util.SerializableList</value>
+				<value>com.digitalbarista.cat.view.ServiceResponse</value>
+				<value>com.digitalbarista.cat.view.ServiceResponseError</value>
 			</list>
 		</property>
 	</bean>
@@ -59,12 +61,20 @@
 		</property>
 		<property name="defaultViews">
     		<list>
-      			<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
-		        <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
-        			<constructor-arg>
-						<ref bean="JAXBMarshaller"/>
-			        </constructor-arg>
-      			</bean>
+    			<bean class="com.digitalbarista.cat.view.ServiceResponseWrappingView">
+    				<constructor-arg>
+		      			<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+    				</constructor-arg>
+    			</bean>
+    			<bean class="com.digitalbarista.cat.view.ServiceResponseWrappingView">
+    				<constructor-arg>
+				        <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+		        			<constructor-arg>
+								<ref bean="JAXBMarshaller"/>
+					        </constructor-arg>
+		      			</bean>
+    				</constructor-arg>
+    			</bean>
     		</list>
   		</property>
 	</bean>
