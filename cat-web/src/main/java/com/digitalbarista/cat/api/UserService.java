@@ -1,7 +1,6 @@
 package com.digitalbarista.cat.api;
 
-import javax.validation.Valid;
-
+import org.hibernate.validator.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +33,8 @@ public class UserService {
 	}
 	
 	@RequestMapping(value="/users",method={RequestMethod.POST})
-	public User saveUser(@RequestBody @Valid User user)
+	@Valid
+	public User saveUser(@RequestBody User user)
 	{
 		return userDao.save(user);
 	}
