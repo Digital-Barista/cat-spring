@@ -21,8 +21,6 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Proxy;
 
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
-
 
 @XmlRootElement
 @Entity
@@ -42,7 +40,6 @@ public class User {
 	@Column(name="username")
 	private String username;
 	
-  @XStreamOmitField
 	@NotNull @Size(max=50)
 	@Column(name="password")
 	private String password;
