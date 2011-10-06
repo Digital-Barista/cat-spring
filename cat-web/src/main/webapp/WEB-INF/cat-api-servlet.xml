@@ -32,22 +32,19 @@
 	    </property>
 	</bean>
 
-	<bean id="XStreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
-		<property name="annotatedClasses">
+	<bean id="JAXBMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<property name="classesToBeBound">
 			<list>
 				<value>com.digitalbarista.cat.data.Client</value>
+				<value>com.digitalbarista.cat.data.User</value>
+				<value>com.digitalbarista.cat.util.SerializableList</value>
 			</list>
-		</property>
-		<property name="aliases">
-			<map>
-				<entry key="list" value="java.util.List"/>
-			</map>
 		</property>
 	</bean>
 	
 	<bean id="XmlConverter" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
-		<property name="marshaller" ref="XStreamMarshaller"/>
-		<property name="unmarshaller" ref="XStreamMarshaller"/>
+		<property name="marshaller" ref="JAXBMarshaller"/>
+		<property name="unmarshaller" ref="JAXBMarshaller"/>
 	</bean>
 	
 	<bean id="JSONConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
@@ -65,7 +62,7 @@
       			<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
 		        <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
         			<constructor-arg>
-						<ref bean="XStreamMarshaller"/>
+						<ref bean="JAXBMarshaller"/>
 			        </constructor-arg>
       			</bean>
     		</list>

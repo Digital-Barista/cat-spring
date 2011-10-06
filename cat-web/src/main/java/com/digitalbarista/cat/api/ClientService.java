@@ -1,7 +1,5 @@
 package com.digitalbarista.cat.api;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.digitalbarista.cat.dao.ClientDao;
 import com.digitalbarista.cat.data.Client;
+import com.digitalbarista.cat.util.SerializableList;
 
 @Controller
 @Transactional
@@ -23,9 +22,9 @@ public class ClientService {
 	private ClientDao clientDao;
 	
 	@RequestMapping(value="/clients",method={RequestMethod.GET})
-	public List<Client> getAllClients()
+	public SerializableList<Client> getAllClients()
 	{
-		return clientDao.getAllClients();
+		return new SerializableList<Client>(clientDao.getAllClients());
 	}
 	
 	@RequestMapping(value="/clients/{id}",method={RequestMethod.GET})

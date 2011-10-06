@@ -8,12 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.annotations.Proxy;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
-@XStreamAlias("Client")
+@XmlRootElement
 @Entity
 @Table(name="client")
 @Proxy(lazy=false)
@@ -22,7 +23,7 @@ public class Client {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="client_id")
-	private long id;
+	private Long id;
 	
 	@Column(name="name")
 	@NotNull @Size(max=64)
@@ -37,20 +38,42 @@ public class Client {
 	private String contactEmail;
 	
 	@Column(name="contact_phone")
-	@Size(max=32)
+	@Size(max=32)  //@PhoneNumber -- We need to create this validator sometime.
 	private String contactPhone;
 	
 	@Column(name="active")
 	private boolean active;
 
-	public long getId() {
+	@Column(name="address1")
+	@Size(max=128)
+	private String address1;
+
+	@Column(name="address2")
+	@Size(max=128)
+	private String address2;
+
+	@Column(name="city")
+	@Size(max=64)
+	private String city;
+
+	@Column(name="state")
+	@Size(max=64)
+	private String state;
+
+	@Column(name="zip")
+	@Size(max=16) //@ZipCode -- we need to define this validator at some point.
+	private String zip;
+
+	@XmlElement
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
+  @XmlElement
 	public String getName() {
 		return name;
 	}
@@ -59,6 +82,7 @@ public class Client {
 		this.name = name;
 	}
 
+  @XmlElement
 	public String getContactName() {
 		return contactName;
 	}
@@ -67,6 +91,7 @@ public class Client {
 		this.contactName = contactName;
 	}
 
+  @XmlElement
 	public String getContactEmail() {
 		return contactEmail;
 	}
@@ -75,6 +100,7 @@ public class Client {
 		this.contactEmail = contactEmail;
 	}
 
+  @XmlElement
 	public String getContactPhone() {
 		return contactPhone;
 	}
@@ -83,6 +109,7 @@ public class Client {
 		this.contactPhone = contactPhone;
 	}
 
+  @XmlElement
 	public boolean isActive() {
 		return active;
 	}
@@ -90,4 +117,49 @@ public class Client {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+  @XmlElement
+  public String getAddress1() {
+    return address1;
+  }
+
+  public void setAddress1(String address1) {
+    this.address1 = address1;
+  }
+
+  @XmlElement
+  public String getAddress2() {
+    return address2;
+  }
+
+  public void setAddress2(String address2) {
+    this.address2 = address2;
+  }
+
+  @XmlElement
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+  @XmlElement
+  public String getState() {
+    return state;
+  }
+
+  public void setState(String state) {
+    this.state = state;
+  }
+
+  @XmlElement
+  public String getZip() {
+    return zip;
+  }
+
+  public void setZip(String zip) {
+    this.zip = zip;
+  }
 }

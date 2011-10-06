@@ -159,12 +159,6 @@
    		<scope>runtime</scope>
    	</dependency>
    	<dependency>
-   		<groupId>com.thoughtworks.xstream</groupId>
-   		<artifactId>xstream-hibernate</artifactId>
-   		<version>1.4.1</version>
-   		<type>jar</type>
-   	</dependency>
-   	<dependency>
    		<groupId>javassist</groupId>
    		<artifactId>javassist</artifactId>
    		<version>3.12.1.GA</version>

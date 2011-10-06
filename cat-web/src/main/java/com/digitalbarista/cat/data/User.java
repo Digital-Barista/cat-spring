@@ -1,6 +1,5 @@
 package com.digitalbarista.cat.data;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,17 +7,24 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Proxy;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
-@XStreamAlias("User")
+
+@XmlRootElement
 @Entity
 @Table(name="users")
 @Proxy(lazy=false)
@@ -36,6 +42,7 @@ public class User {
 	@Column(name="username")
 	private String username;
 	
+  @XStreamOmitField
 	@NotNull @Size(max=50)
 	@Column(name="password")
 	private String password;
@@ -43,9 +50,10 @@ public class User {
 	@Column(name="enabled")
 	private boolean enabled;
 	
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable(name="authorities", joinColumns=@JoinColumn(name="username"))
 	@Column(name="authority")
+	@Fetch(FetchMode.SELECT)
 	private Set<String> authorities=new HashSet<String>();
 	
 	private User(){}
@@ -56,16 +64,23 @@ public class User {
 		this.password=encodedPassword;
 	}
 	
+  @XmlElement
 	public String getUsername()
 	{
 		return this.username;
 	}
 	
+  @XmlElement
 	public void setEncryptedPassword(String encryptedPassword)
 	{
+    if(encryptedPassword==null || encryptedPassword.trim().length()==0)
+      return;
 		this.password = encryptedPassword;
 	}
 	
+  public String getEncryptedPassword(){return null;}
+  
+  @XmlElement
 	public boolean isEnabled()
 	{
 		return this.enabled;
@@ -76,6 +91,8 @@ public class User {
 		this.enabled = enabled;
 	}
 
+	@XmlElement(name="authority")
+	@XmlElementWrapper(name="authorities")
 	public Set<String> getAuthorities() {
 		return authorities;
 	}
