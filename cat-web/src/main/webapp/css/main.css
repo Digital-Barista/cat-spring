@@ -100,18 +100,6 @@ a, a:hover, a:visited, a:active{
   padding:5px;
 }
 
-#account-container{
-  position:relative;
-}
-#account-container #create-button{
-  position:absolute;
-  bottom:0px;
-  right:0px;
-}
-#account-container .address{
-	text-align:center;
-}
-
 
 .edit-line{
   display:block;
@@ -138,7 +126,3 @@ a, a:hover, a:visited, a:active{
 	text-align:center;
 }
 
-#search-client #client-grid{
-	width:920px;
-	min-height:400px;
-}

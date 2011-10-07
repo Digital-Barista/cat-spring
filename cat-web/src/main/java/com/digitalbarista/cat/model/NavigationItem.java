@@ -7,6 +7,7 @@ public class NavigationItem
 	private boolean selected;
 	private String displayName;
 	private String url;
+	private NavigationItem parent;
 	private List<NavigationItem> navigationItems;
 
 	public NavigationItem()
@@ -47,9 +48,23 @@ public class NavigationItem
 	public void setSelected(boolean selected)
 	{
 		this.selected = selected;
+		if (parent != null)
+		{
+		  parent.setSelected(selected);
+		}
 	}
 
-	@Override
+	public NavigationItem getParent()
+  {
+    return parent;
+  }
+
+  public void setParent(NavigationItem parent)
+  {
+    this.parent = parent;
+  }
+
+  @Override
 	public int hashCode()
 	{
 		final int prime = 31;

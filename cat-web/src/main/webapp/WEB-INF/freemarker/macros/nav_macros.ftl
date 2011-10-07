@@ -27,8 +27,9 @@
 </#macro>
 
 <#macro listLeftNavItems items>
-  <ul>
-    <#list items as item>
+  <#list items as item>
+  
+    <#if item.displayName??>
       <#local selectedClass = "">
       <#if item.selected>
         <#local selectedClass = "selected">
@@ -39,8 +40,13 @@
           <span>${item.displayName}</span>
         </a>
       </li>
-    </#list>
-  </ul>
+    </#if>
+    
+    <#-- List child items -->
+    <#if item.selected && item.navigationItems??>
+      <@listLeftNavItems item.navigationItems />
+    </#if>
+  </#list>
 </#macro>
 
 <#macro leftNavigation navigation>
@@ -48,7 +54,9 @@
     <div class="dynamic-content">
       <#list navigation.allNavigationItems as item>
         <#if item.selected && item.navigationItems??>
-          <@listLeftNavItems item.navigationItems />
+          <ul>
+            <@listLeftNavItems item.navigationItems />
+          </ul>
         </#if>
       </#list>
     </div>

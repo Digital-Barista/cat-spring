@@ -1,0 +1,16 @@
+#account-container{
+  position:relative;
+}
+#account-container #create-button{
+  position:absolute;
+  bottom:0px;
+  right:0px;
+}
+#account-container .address{
+  text-align:center;
+}
+
+#search-client #client-grid{
+  width:920px;
+  min-height:600px;
+}

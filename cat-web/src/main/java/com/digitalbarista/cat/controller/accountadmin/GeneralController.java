@@ -22,7 +22,7 @@ public class GeneralController extends ShellController
 	public ModelAndView init()
 	{
 		ModelAndView ret = super.init();
-    ret.addObject("mainContent", "accountadmin/account_admin_general.ftl");
+    ret.addObject("mainContent", "accountadmin/general.ftl");
     ret.addObject("clientList", clientService.getAllClients());
 		return ret;
 	}

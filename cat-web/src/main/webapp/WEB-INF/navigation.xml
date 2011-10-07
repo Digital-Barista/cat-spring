@@ -81,53 +81,80 @@
     </property>
     <property name="adminItems">
       <list>
-        <bean parent="navigationItem">
-          <property name="url" value="/app/user_switcher" />
-          <property name="displayName" value="User Switcher" />
-        </bean>
-        <bean parent="navigationItem">
-          <property name="url" value="/app/system_admin" />
-          <property name="displayName" value="System Administration" />
-        </bean>
-        <bean parent="navigationItem">
-          <property name="url" value="/app/account_admin/search_client" />
-          <property name="displayName" value="Account Admin" />
-          <property name="navigationItems">
-            <list>
-              <bean parent="navigationItem">
-                <property name="url" value="/app/account_admin/search_client" />
-                <property name="displayName" value="Search Clients" />
-              </bean>
-              <bean parent="navigationItem">
-                <property name="url" value="/app/account_admin/add_client" />
-                <property name="displayName" value="Add Client" />
-              </bean>
-            </list>
-          </property>
-        </bean>
-        <bean parent="navigationItem">
-          <property name="navigationItems">
-            <list>
-              <bean parent="navigationItem">
-                <property name="url" value="/app/account_admin/general" />
-                <property name="displayName" value="General" />
-              </bean>
-              <bean parent="navigationItem">
-                <property name="url" value="/app/account_admin/billing" />
-                <property name="displayName" value="Billing" />
-              </bean>
-              <bean parent="navigationItem">
-                <property name="url" value="/app/account_admin/user" />
-                <property name="displayName" value="Users/Permissions" />
-              </bean>
-              <bean parent="navigationItem">
-                <property name="url" value="/app/account_admin/social_media_account" />
-                <property name="displayName" value="Social Media Accounts" />
-              </bean>
-            </list>
-          </property>
-        </bean>
+        <bean parent="userSwitcher" />
+        <bean parent="systemAdmin" />
+        <bean parent="accountAdmin" />
+        <bean parent="editClient" />
       </list>
     </property>
+  </bean>
+  
+  <!-- 
+    Navigation Items 
+  -->
+  <bean name="userSwitcher" parent="navigationItem">
+    <property name="url" value="/app/user_switcher" />
+    <property name="displayName" value="User Switcher" />
+  </bean>
+  <bean name="systemAdmin" parent="navigationItem">
+    <property name="url" value="/app/system_admin" />
+    <property name="displayName" value="System Administration" />
+  </bean>
+  <bean name="accountAdmin" parent="navigationItem">
+    <property name="url" value="/app/account_admin/search_client" />
+    <property name="displayName" value="Account Admin" />
+    <property name="navigationItems">
+      <list>
+        <bean parent="findClient" />
+        <bean parent="editClient" />
+      </list>
+    </property>
+  </bean>
+  <bean name="findClient" parent="navigationItem">
+    <property name="navigationItems">
+      <list>
+        <bean parent="searchClient" />
+        <bean parent="addClient" />
+      </list>
+    </property>
+  </bean>
+  <bean name="searchClient" parent="navigationItem">
+    <property name="url" value="/app/account_admin/search_client" />
+    <property name="displayName" value="Search Clients" />
+  </bean>
+  <bean name="addClient" parent="navigationItem">
+    <property name="url" value="/app/account_admin/add_client" />
+    <property name="displayName" value="Add Client" />
+  </bean>
+        
+  <bean name="editClient" parent="navigationItem">
+    <property name="navigationItems">
+      <list>
+        <bean parent="general" />
+        <bean parent="billing" />
+        <bean parent="users" />
+        <bean parent="socialMediaAccounts" />
+      </list>
+    </property>
+  </bean>
+  <bean name="general" parent="navigationItem">
+    <property name="parent" ref="accountAdmin" />
+    <property name="url" value="/app/account_admin/general" />
+    <property name="displayName" value="General" />
+  </bean>
+  <bean name="billing" parent="navigationItem">
+    <property name="parent" ref="accountAdmin" />
+    <property name="url" value="/app/account_admin/billing" />
+    <property name="displayName" value="Billing" />
+  </bean>
+  <bean name="users" parent="navigationItem">
+    <property name="parent" ref="accountAdmin" />
+    <property name="url" value="/app/account_admin/user" />
+    <property name="displayName" value="Users/Permissions" />
+  </bean>
+  <bean name="socialMediaAccounts" parent="navigationItem">
+    <property name="parent" ref="accountAdmin" />
+    <property name="url" value="/app/account_admin/social_media_account" />
+    <property name="displayName" value="Social Media Accounts" />
   </bean>
 </beans>

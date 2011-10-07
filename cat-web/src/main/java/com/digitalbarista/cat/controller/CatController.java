@@ -39,6 +39,11 @@ public abstract class CatController
 			{
         item.setSelected(setSelectedNavigation(item.getNavigationItems())); 
         
+        if (item.isSelected())
+        {
+          return true;
+        }
+        
 				String strippedUrl = item.getUrl();
 				if(strippedUrl!=null && strippedUrl.startsWith("/app/"))
 					strippedUrl=strippedUrl.substring(5);			
