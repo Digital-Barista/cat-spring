@@ -22,7 +22,9 @@
 
 	<bean id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>
 	
-	<tx:annotation-driven transaction-manager="txManager"/>
+	<tx:annotation-driven transaction-manager="txManager">
+		<property name="transactionManagerName" value="java:/TransactionManager"/>
+	</tx:annotation-driven>
 
 	<jee:jndi-lookup id="cat2-ds" jndi-name="java:jdbc/campaignAdmin2DS"/>
 	
