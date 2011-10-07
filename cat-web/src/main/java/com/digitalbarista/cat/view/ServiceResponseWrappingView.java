@@ -121,7 +121,7 @@ public class ServiceResponseWrappingView extends AbstractView {
       }
       
       resp.setResponse(paramMap.get(key));
-      paramMap.put(key, resp);
+      paramMap.put("response", resp);
     }
         
     if(hasBindingErrors)
