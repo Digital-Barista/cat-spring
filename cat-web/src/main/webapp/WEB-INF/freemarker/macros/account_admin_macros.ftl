@@ -1,24 +1,28 @@
+<#macro showEditLine name value contentMacro>
+  <li class="edit-line">
+    <a href="javascript:void(0)">
+      <span class="name">${name}</span>
+      <span class="value">${value}</span>
+      <span class="edit-button">Edit</span>
+    </a>
+    <@.vars[contentMacro] />
+  </li>
+</#macro>
+
 
 
 <#macro showClientFields>
 	<div id="client-info">
-	 <div class="address">
-     <ul>
-        <li><span class="label">Name</span><input name="name" type="text" /></li>
-        <li><span class="label">Address 1</span><input name="address1" type="text" /></li>
-        <li><span class="label">Address 2</span><input name="address2" type="text" /></li>
-        <li><span class="label">City</span><input name="city" type="text" /></li>
-        <li><span class="label">State</span><input name="state" type="text" /></li>
-        <li><span class="label">Zip</span><input name="zip" type="text" /></li>
-      </ul>
-    </div>
-    
-    <div class="contact-info">
-      <ul>
-        <li><span class="label">Name</span><input name="contactName" type="text" /></li>
-        <li><span class="label">Phone</span><input name="contactPhone" type="text" /></li>
-        <li><span class="label">Email</span><input name="contactEmail" type="text" /></li>
-      </ul>
-    </div>
+     <table>
+      <tr><td class="label">Company Name</td><td><input name="name" type="text" /></td></tr>
+      <tr><td class="label">Address 1</td><td><input name="address1" type="text" /></td></tr>
+      <tr><td class="label">Address 2</td><td><input name="address2" type="text" /></td></tr>
+      <tr><td class="label">City</td><td><input name="city" type="text" /></td></tr>
+      <tr><td class="label">State</td><td><input name="state" type="text" /></td></tr>
+      <tr><td class="label">Zip</td><td><input name="zip" type="text" /></td></tr>
+      <tr><td class="label">Contact Name</td><td><input name="contactName" type="text" /></td></tr>
+      <tr><td class="label">Contact Phone</td><td><input name="contactPhone" type="text" /></td></tr>
+      <tr><td class="label">Contact Email</td><td><input name="contactEmail" type="text" /></td></tr>
+    </table>
 	</div>
 </#macro>

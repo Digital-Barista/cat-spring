@@ -14,13 +14,15 @@
 
 <#macro listNavItems items>
   <#list items as item>
-    <#local selectedClass = "">
-    <#if item.selected>
-      <#local selectedClass = "selected">
+    <#if item.displayName??>
+      <#local selectedClass = "">
+      <#if item.selected>
+        <#local selectedClass = "selected">
+      </#if>
+      <a href="<@spring.url item.url/>" class="main-menu-item ${selectedClass}">
+        <span>${item.displayName}</span>
+      </a>
     </#if>
-    <a href="<@spring.url item.url/>" class="main-menu-item ${selectedClass}">
-      <span>${item.displayName}</span>
-    </a>
   </#list>
 </#macro>
 
@@ -33,6 +35,7 @@
       </#if>
       <li class="left-menu-item ${selectedClass}">
         <a href="<@spring.url item.url/>">
+          <div class="icon"></div>
           <span>${item.displayName}</span>
         </a>
       </li>

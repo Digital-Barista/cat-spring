@@ -32,6 +32,8 @@ public class Navigation
 	public static final String NAV_ITEM_ACCOUNT_BILLING = "account/billing";
 	
 	public static final String NAV_ITEM_ACCOUNT_ADMIN = "account_admin";
+	public static final String NAV_ITEM_ACCOUNT_ADMIN_SEARCH = "account_admin/search_client";
+	public static final String NAV_ITEM_ACCOUNT_ADMIN_ADD_CLIENT = "account_admin/add_client";
 	public static final String NAV_ITEM_ACCOUNT_ADMIN_GENERAL = "account_admin/general";
 	public static final String NAV_ITEM_ACCOUNT_ADMIN_BILLING = "account_admin/billing";
 	public static final String NAV_ITEM_ACCOUNT_ADMIN_USER = "account_admin/user";

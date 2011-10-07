@@ -5,8 +5,9 @@
 <html>
   <head>
     <link type="text/css" href="<@spring.url '/css/main.css'/>" rel="stylesheet" />
-  	<!-- or, instead of using the spring macro, you can hard link to /cat/css/main.css'-->
-	<!-- BUT . . . the macro will automatically cope with a different context root. -->
+    <link type="text/css" href="<@spring.url '/css/slick.grid.css'/>" rel="stylesheet" />
+    <link type="text/css" href="<@spring.url '/css/jquery-ui-1.8.5.custom.css'/>" rel="stylesheet" />
+    <link type="text/css" href="<@spring.url '/css/slick-default-theme.css'/>" rel="stylesheet" />
 	
     <#-- Shared scripts -->
     <script src="<@spring.url '/js/lib/jquery-1.6.4.min.js' />"></script>

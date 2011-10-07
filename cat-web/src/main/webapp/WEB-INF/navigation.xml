@@ -90,8 +90,22 @@
           <property name="displayName" value="System Administration" />
         </bean>
         <bean parent="navigationItem">
-          <property name="url" value="/app/account_admin/general" />
+          <property name="url" value="/app/account_admin/search_client" />
           <property name="displayName" value="Account Admin" />
+          <property name="navigationItems">
+            <list>
+              <bean parent="navigationItem">
+                <property name="url" value="/app/account_admin/search_client" />
+                <property name="displayName" value="Search Clients" />
+              </bean>
+              <bean parent="navigationItem">
+                <property name="url" value="/app/account_admin/add_client" />
+                <property name="displayName" value="Add Client" />
+              </bean>
+            </list>
+          </property>
+        </bean>
+        <bean parent="navigationItem">
           <property name="navigationItems">
             <list>
               <bean parent="navigationItem">
