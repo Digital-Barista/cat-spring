@@ -1,12 +1,19 @@
 package com.digitalbarista.cat.view;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.view.AbstractView;
+
+import com.digitalbarista.cat.util.SerializableList;
 
 public class ServiceResponseWrappingView extends AbstractView {
 
@@ -83,17 +90,51 @@ public class ServiceResponseWrappingView extends AbstractView {
 
   public void render(Map paramMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
     
-    if(paramMap.size()!=1 || (paramMap.containsKey("error") && paramMap.size()!=2))
-      throw new IllegalArgumentException("ServiceResponseWrappingView doesn't know how to deal with multiple objects in the view!  Make sure you use it for service methods ONLY!");
-    
     ServiceResponse resp = new ServiceResponse();
     
-    if(paramMap.containsKey("error"))
-      resp.setError((ServiceResponseError)paramMap.remove("error"));
+    List<BindingResult> erroredBindingResults = new ArrayList<BindingResult>();
     
-    String key=(String)paramMap.keySet().iterator().next();
-    resp.setResponse(paramMap.remove(key));
-    paramMap.put(key, resp);
+    boolean hasBindingErrors=false;
+    
+    for(String key : new HashSet<String>((Set<String>)paramMap.keySet()))
+    {
+      if(key.equals("error"))
+      {
+        resp.setError((ServiceResponseError)paramMap.remove("error"));
+        continue;
+      }
+      
+      if(BindingResult.class.isAssignableFrom(paramMap.get(key).getClass()))
+      {
+        BindingResult result = (BindingResult)paramMap.remove(key);
+        if(result.hasErrors())
+        {
+          hasBindingErrors=true;
+          erroredBindingResults.add(result);
+        }
+        continue;
+      }
+      
+      if(resp.getResponse()!=null)
+      {
+        throw new IllegalArgumentException("ServiceResponseWrappingView doesn't know how to deal with multiple objects in the view!  Make sure you use it for service methods ONLY!");
+      }
+      
+      resp.setResponse(paramMap.get(key));
+      paramMap.put(key, resp);
+    }
+        
+    if(hasBindingErrors)
+    {
+      resp.setError(new ServiceResponseError());
+      resp.getError().setCode(100); //Binding Errors
+      resp.getError().setErrorKey("binding.error");
+      resp.getError().setErrorMessage("There were errors binding the submitted object to the expected object!");
+      resp.setResponse(new SerializableList<BindingResult>(erroredBindingResults));
+    }
+
+    if(resp.getResponse()==null)
+      paramMap.put("response", resp);
     
     viewDelegate.render(paramMap, request, response);
   }
