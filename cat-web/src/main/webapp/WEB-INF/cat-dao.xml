@@ -20,12 +20,12 @@
         http://www.springframework.org/schema/cache
         http://www.springframework.org/schema/cache/spring-cache-3.1.xsd">
 
-	<bean id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>
+	<bean id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="transactionManagerName" value="java:/TransactionManager"/>	
+	</bean>
 	
-	<tx:annotation-driven transaction-manager="txManager">
-		<property name="transactionManagerName" value="java:/TransactionManager"/>
-	</tx:annotation-driven>
-
+	<tx:annotation-driven transaction-manager="txManager"/>
+	
 	<jee:jndi-lookup id="cat2-ds" jndi-name="java:jdbc/campaignAdmin2DS"/>
 	
 	<cache:annotation-driven cache-manager="generalCacheManager"/>
