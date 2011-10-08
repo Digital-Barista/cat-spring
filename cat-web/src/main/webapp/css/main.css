@@ -105,6 +105,9 @@ a, a:hover, a:visited, a:active{
   display:block;
 	border-bottom:1px solid #ccc;
 }
+.edit-line.editing{
+  background-color:#eee;
+}
 .edit-line a{
   display:block;
   padding:10px;
@@ -112,6 +115,14 @@ a, a:hover, a:visited, a:active{
 }
 .edit-line a:hover{
   background-color:#eee;
+}
+.edit-line.editing a:hover{
+  background-color:transparent;
+  cursor:default;
+}
+.edit-line.editing .value,
+.edit-line.editing .edit-button{
+  display:none;
 }
 .edit-line span{
 	float:left;
@@ -124,5 +135,13 @@ a, a:hover, a:visited, a:active{
 }
 .edit-line .title{
 	text-align:center;
+}
+.edit-line .editable{
+	margin-left:100px;
+	margin-top:-36px;
+	display:none;
+}
+.edit-line.editing .editable{
+	display:block;
 }
 

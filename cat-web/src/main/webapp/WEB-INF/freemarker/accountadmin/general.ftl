@@ -9,3 +9,9 @@
 	</ul>
   
 </div>
+
+<script>
+$(document).ready(function(){
+  dbi.setupEditLines();
+});
+</script>

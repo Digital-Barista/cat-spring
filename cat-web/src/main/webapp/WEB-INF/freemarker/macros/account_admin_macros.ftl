@@ -1,13 +1,4 @@
-<#macro showEditLine name value contentMacro>
-  <li class="edit-line">
-    <a href="javascript:void(0)">
-      <span class="name">${name}</span>
-      <span class="value">${value}</span>
-      <span class="edit-button">Edit</span>
-    </a>
-    <@.vars[contentMacro] />
-  </li>
-</#macro>
+
 
 
 

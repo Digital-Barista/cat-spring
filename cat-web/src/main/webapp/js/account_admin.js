@@ -28,11 +28,11 @@ dbi.AccountAdmin = Class.extend({
 		 * Edit button cell formatter
 		 */
 		EditButtonCellFormatter: function(row, cell, value, columnDef, dataContext){
-      return '<a class="button " href="/' + dbi.getContext() + '/app/account_admin/general?client_id=' + dataContext.id + '">' +
-        '<span class="button-content">' +
-          '<span class="button-text">Edit</span>' +
-        '</span>' +
-        '</a>';
+	      return '<a class="button " href="/' + dbi.getContext() + '/app/account_admin/general?client_id=' + dataContext.id + '">' +
+	        '<span class="button-content">' +
+	          '<span class="button-text">Edit</span>' +
+	        '</span>' +
+	        '</a>';
 		},
 		
 		/**

@@ -61,5 +61,12 @@ var dbi = $.extend({}, dbi, {
 	  });
 	  
 	  return data;
+	},
+	
+	setupEditLines: function(){
+		$('.edit-line').click(function(e){
+			$('.edit-line').removeClass('editing');
+			$(this).addClass('editing');
+		});
 	}
 });

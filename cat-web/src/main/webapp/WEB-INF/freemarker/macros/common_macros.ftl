@@ -10,3 +10,16 @@
 		</span>
 	</a>
 </#macro>
+
+<#macro showEditLine name value contentMacro>
+  <li class="edit-line">
+    <a href="javascript:void(0)">
+      <span class="name">${name}</span>
+      <span class="value">${value}</span>
+      <span class="edit-button">Edit</span>
+    </a>
+    <div class="editable">
+      <@.vars[contentMacro] />
+    </div>
+  </li>
+</#macro>
