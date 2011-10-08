@@ -28,8 +28,8 @@ public class AccountAdminSearchController extends ShellController
 		ModelAndView ret = super.init();
     ret.addObject("mainContent", "accountadmin/search_client.ftl");
     
-//    JSON json = JSONSerializer.toJSON(clientService.getAllClients());
-//    ret.addObject("clientList", json.toString());
+    JSON json = JSONSerializer.toJSON(clientService.getAllClients());
+    ret.addObject("clientList", json.toString());
 		return ret;
 	}
 	
