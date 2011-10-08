@@ -4,12 +4,12 @@
 <div id="account-container">
 	
 	<ul class="edit-options">
-	 <@showEditLine name="Company" value="DBI" contentMacro="showClientFields"  />
-   <@showEditLine name="Account Type" value="Broadcast" contentMacro="showClientFields" />
+	 <@showEditLine name="Company" value="${currentClient.name!}" contentMacro="showClientFields"  />
 	</ul>
   
 </div>
 
+<@writeJsonObjects />
 <script>
 $(document).ready(function(){
   dbi.setupEditLines();

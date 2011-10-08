@@ -108,15 +108,15 @@ a, a:hover, a:visited, a:active{
 .edit-line.editing{
   background-color:#eee;
 }
-.edit-line a{
+.edit-line a.edit-link{
   display:block;
   padding:10px;
   height:20px;
 }
-.edit-line a:hover{
+.edit-line a.edit-link:hover{
   background-color:#eee;
 }
-.edit-line.editing a:hover{
+.edit-line.editing a.edit-link:hover{
   background-color:transparent;
   cursor:default;
 }
@@ -124,16 +124,16 @@ a, a:hover, a:visited, a:active{
 .edit-line.editing .edit-button{
   display:none;
 }
-.edit-line span{
-	float:left;
-}
 .edit-line .name{
+  float:left;
 	width:100px;
 }
 .edit-line .value{
+  float:left;
 	width:760px;
 }
 .edit-line .title{
+  float:left;
 	text-align:center;
 }
 .edit-line .editable{
