@@ -65,7 +65,7 @@ public abstract class CatController
 			Method method = this.getClass().getMethod("init");
 	    for (Annotation a : method.getAnnotations())
 	    {
-	    	if (a.annotationType() == RequestMapping.class)
+	    	if (RequestMapping.class.isAssignableFrom(a.annotationType()))
 	    	{
 	    		RequestMapping map = (RequestMapping)method.getAnnotation(RequestMapping.class);
 	    		if (map.value().length > 0)
