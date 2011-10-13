@@ -33,4 +33,6 @@
 	</bean>
 
 	<bean id="appContextProvider" class="com.digitalbarista.cat.util.ApplicationContextProvider"/>
+
+	<bean id="JacksonObjectMapper" class="com.digitalbarista.cat.view.JaxbObjectMapper"/>
 </beans>

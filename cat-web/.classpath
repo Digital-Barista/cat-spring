@@ -14,16 +14,14 @@
   <classpathentry kind="var" path="M2_REPO/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar"/>
   <classpathentry kind="var" path="M2_REPO/cglib/cglib/2.2.2/cglib-2.2.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/cglib/cglib-nodep/2.2/cglib-nodep-2.2.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.4/commons-lang-2.4.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.1/commons-logging-1.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/dbdeploy/dbdeploy-core/3.0M3/dbdeploy-core-3.0M3.jar"/>
   <classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/easymock/easymock/3.0/easymock-3.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/net/sf/ehcache/ehcache-core/2.4.5/ehcache-core-2.4.5.jar"/>
   <classpathentry kind="var" path="M2_REPO/net/sf/ehcache/ehcache-terracotta/2.4.5/ehcache-terracotta-2.4.5.jar"/>
-  <classpathentry kind="var" path="M2_REPO/net/sf/ezmorph/ezmorph/1.0.1/ezmorph-1.0.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/freemarker/freemarker/2.3.18/freemarker-2.3.18.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-all/1.1/hamcrest-all-1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-commons-annotations/3.2.0.Final/hibernate-commons-annotations-3.2.0.Final.jar"/>
@@ -40,7 +38,6 @@
   <classpathentry kind="var" path="M2_REPO/jboss/jbossas/core-libs/jboss-jca/4.2.2.GA/jboss-jca-4.2.2.GA.jar"/>
   <classpathentry kind="var" path="M2_REPO/jboss/jboss-jmx/4.2.3.GA/jboss-jmx-4.2.3.GA.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/beust/jcommander/1.12/jcommander-1.12.jar"/>
-  <classpathentry kind="var" path="M2_REPO/net/sf/json-lib/json-lib/1.0/json-lib-1.0-jdk15.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.16/log4j-1.2.16.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/objenesis/objenesis/1.2/objenesis-1.2.jar"/>

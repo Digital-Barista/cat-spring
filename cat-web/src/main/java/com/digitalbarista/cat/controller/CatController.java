@@ -4,6 +4,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.List;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,9 @@ import com.digitalbarista.cat.util.ApplicationContextProvider;
 public abstract class CatController
 {
 
+  @Autowired
+  protected ObjectMapper jsonSerializer;
+  
 	@Autowired
 	private ApplicationContextProvider ctxProvider;
 
@@ -88,4 +92,13 @@ public abstract class CatController
   {
 	  return this.ctxProvider.getApplicationContext().getBean(Navigation.class);
   }
+	
+	public String serializeToJson(Object obj)
+	{
+	  try {
+      return jsonSerializer.writeValueAsString(obj);
+    } catch (Exception e) {
+      throw new RuntimeException("Error serializing object to JSON: ",e);
+    }
+	}
 }

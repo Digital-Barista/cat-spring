@@ -1,8 +1,5 @@
 package com.digitalbarista.cat.controller.accountadmin;
 
-import net.sf.json.JSON;
-import net.sf.json.JSONSerializer;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -28,8 +25,7 @@ public class AccountAdminSearchController extends ShellController
 		ModelAndView ret = super.init();
     ret.addObject("mainContent", "accountadmin/search_client.ftl");
     
-    JSON json = JSONSerializer.toJSON(clientService.getAllClients());
-    ret.addObject("clientList", json.toString());
+    ret.addObject("clientList", serializeToJson(clientService.getAllClients()));
 		return ret;
 	}
 	

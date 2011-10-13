@@ -1,7 +1,5 @@
 package com.digitalbarista.cat.controller.accountadmin;
 
-import net.sf.json.JSONSerializer;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -34,7 +32,7 @@ public class GeneralController extends ShellController
       if (client != null)
       {
         ret.addObject("currentClient", client);
-        ret.addObject("currentClientJson", JSONSerializer.toJSON(client));
+        ret.addObject("currentClientJson", serializeToJson(client));
       }
     }
 		return ret;

@@ -6,13 +6,7 @@
   <packaging>war</packaging>
   <name>CAT Web Project</name>
   <description>Digital Barista Campaign Administration tool</description>
-  <dependencies>
-    <dependency>   
-      <groupId>net.sf.json-lib</groupId>   
-      <artifactId>json-lib</artifactId>   
-      <version>1.0</version>   
-      <classifier>jdk15</classifier>   
-    </dependency>  
+  <dependencies>  
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-webmvc</artifactId>
