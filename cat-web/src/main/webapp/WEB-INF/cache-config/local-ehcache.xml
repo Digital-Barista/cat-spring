@@ -3,4 +3,5 @@
     <cache name="clientCache" eternal="true"/>
     <cache name="clientListCache" eternal="true"/>
     <cache name="clientObjectIDCache" eternal="true"/>
+    <cache name="userReadableClientCache" eternal="true"/>
 </ehcache>

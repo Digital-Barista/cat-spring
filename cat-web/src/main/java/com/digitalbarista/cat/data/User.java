@@ -38,6 +38,7 @@ public class User {
 	@Id
 	@NotNull @Size(max=50)
 	@Column(name="username")
+  @XmlElement
 	private String username;
 	
 	@NotNull @Size(max=50)
@@ -46,6 +47,9 @@ public class User {
 	
 	@Column(name="enabled")
 	private boolean enabled;
+	
+	@Column(name="client_id")
+	private Long clientid;
 	
 	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable(name="authorities", joinColumns=@JoinColumn(name="username"))
@@ -61,13 +65,11 @@ public class User {
 		this.password=encodedPassword;
 	}
 	
-  @XmlElement
 	public String getUsername()
 	{
 		return this.username;
 	}
 	
-  @XmlElement
 	public void setEncryptedPassword(String encryptedPassword)
 	{
     if(encryptedPassword==null || encryptedPassword.trim().length()==0)
@@ -93,4 +95,13 @@ public class User {
 	public Set<String> getAuthorities() {
 		return authorities;
 	}
+
+	@XmlElement(name="client-id")
+  public Long getClientid() {
+    return clientid;
+  }
+
+  public void setClientid(Long clientid) {
+    this.clientid = clientid;
+  }
 } 

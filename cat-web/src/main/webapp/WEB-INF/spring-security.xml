@@ -220,5 +220,7 @@
     <constructor-arg ref="cat2-ds"/>
     <constructor-arg ref="lookupStrategy"/>
     <constructor-arg ref="aclCache"/>
+	<property name="classIdentityQuery" value="SELECT @@IDENTITY"/>
+	<property name="sidIdentityQuery" value="SELECT @@IDENTITY"/>
   </bean>
 </beans>

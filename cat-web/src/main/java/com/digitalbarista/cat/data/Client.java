@@ -2,6 +2,8 @@ package com.digitalbarista.cat.data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +21,15 @@ import org.hibernate.annotations.Proxy;
 @Proxy(lazy=false)
 public class Client {
 
+  public enum Type
+  {
+    Basic,
+    Standard,
+    Professional,
+    Enterprise,
+    Reseller;
+  }
+  
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="client_id")
@@ -62,6 +73,11 @@ public class Client {
 	@Column(name="zip")
 	@Size(max=16) //@ZipCode -- we need to define this validator at some point.
 	private String zip;
+	
+	@Column(name="type")
+	@Enumerated(EnumType.STRING)
+	@NotNull
+	private Client.Type type=Type.Basic;
 
 	@XmlElement
 	public Long getId() {
@@ -160,5 +176,13 @@ public class Client {
 
   public void setZip(String zip) {
     this.zip = zip;
+  }
+
+  public Client.Type getType() {
+    return type;
+  }
+
+  public void setType(Client.Type type) {
+    this.type = type;
   }
 }

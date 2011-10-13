@@ -38,4 +38,10 @@ public class UserService {
 	{
 		return userDao.save(user);
 	}
+	
+	@RequestMapping(value="/users/{username}/assign/{clientid}",method={RequestMethod.POST})
+	public void associate(@PathVariable("username") String username, @PathVariable("clientid") Long clientid)
+	{
+	  userDao.associateUserWithClient(username, clientid);
+	}
 }
