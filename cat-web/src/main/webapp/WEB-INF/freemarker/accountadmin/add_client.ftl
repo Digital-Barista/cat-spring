@@ -3,7 +3,6 @@
 
 
 <@showClientFields />
-<@button id="create-button" href="javascript:void(0)" text="Create" />
 
 <#-- Script setup -->
 <script src="<@spring.url '/js/account_admin.js' />"></script>

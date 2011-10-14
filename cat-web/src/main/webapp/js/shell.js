@@ -64,9 +64,8 @@ var dbi = $.extend({}, dbi, {
 	},
 	
 	setupEditLines: function(){
-		$('.edit-line').click(function(e){
-			$('.edit-line').removeClass('editing');
-			$(this).addClass('editing');
+		$('.edit-link').click(function(e){
+			$(this).closest('.edit-line').addClass('editing');
 		});
 	}
 });

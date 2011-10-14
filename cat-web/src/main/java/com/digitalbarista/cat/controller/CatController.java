@@ -4,6 +4,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,14 +26,32 @@ public abstract class CatController
 	@Autowired
 	private ApplicationContextProvider ctxProvider;
 
-	protected ModelAndView init()
+	protected ModelAndView init(HttpServletRequest request)
 	{
 		ModelAndView ret = new ModelAndView();
 		ret.addObject("navigation", getNavigation());
 		setSelectedNavigation(getNavigation().getAllNavigationItems());
+		applyQueryStringParams(getNavigation().getAllNavigationItems(), request);
 		return ret;
 	}
 	
+	
+	private void applyQueryStringParams(List<NavigationItem> items, HttpServletRequest request)
+	{
+		if (items != null)
+		{
+			String clientId = request.getParameter("client_id");
+			for (NavigationItem item : items)
+			{
+				if (clientId != null &&
+						item.getUrl() != null)
+				{
+					item.setUrl(item.getUrl().replace("{client_id}", clientId));
+				}
+				applyQueryStringParams(item.getNavigationItems(), request);
+			}
+		}
+	}
 	
 	protected boolean setSelectedNavigation(List<NavigationItem> items)
 	{
@@ -49,8 +69,17 @@ public abstract class CatController
         }
         
 				String strippedUrl = item.getUrl();
-				if(strippedUrl!=null && strippedUrl.startsWith("/app/"))
-					strippedUrl=strippedUrl.substring(5);			
+				if(strippedUrl != null)
+				{
+					if (strippedUrl.startsWith("/app/"))
+					{
+						strippedUrl=strippedUrl.substring(5);
+					}
+					if (strippedUrl.contains("?"))
+					{
+						strippedUrl = strippedUrl.substring(0, strippedUrl.indexOf("?"));
+					}
+				}
 				if (navItemName.equals(strippedUrl))
 				{
 					item.setSelected(true);
@@ -63,29 +92,28 @@ public abstract class CatController
 	
 	private String getUrl()
 	{
-		String ret = null;
 		try
     {
-			Method method = this.getClass().getMethod("init");
-	    for (Annotation a : method.getAnnotations())
-	    {
-	    	if (RequestMapping.class.isAssignableFrom(a.annotationType()))
-	    	{
-	    		RequestMapping map = (RequestMapping)method.getAnnotation(RequestMapping.class);
-	    		if (map.value().length > 0)
-	    		{
-	    			ret = map.value()[0];
-	    		}
-	    	}
-	    }
+			Method[] methods = getClass().getMethods();
+			for (Method method : methods)
+			{
+		    for (Annotation a : method.getAnnotations())
+		    {
+		    	if (RequestMapping.class.isAssignableFrom(a.annotationType()))
+		    	{
+		    		RequestMapping map = (RequestMapping)method.getAnnotation(RequestMapping.class);
+		    		if (map.value().length > 0)
+		    		{
+		    			return map.value()[0];
+		    		}
+		    	}
+		    }
+			}
     }
     catch (SecurityException e)
     {
     }
-    catch (NoSuchMethodException e)
-    {
-    }
-		return ret;
+		return null;
 	}
 	
 	public Navigation getNavigation()

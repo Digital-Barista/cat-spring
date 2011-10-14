@@ -1,5 +1,7 @@
 package com.digitalbarista.cat.controller.accountadmin;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -21,9 +23,9 @@ public class GeneralController extends ShellController
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(method=RequestMethod.GET, value=Navigation.NAV_ITEM_ACCOUNT_ADMIN_GENERAL)
-	public ModelAndView init(@RequestParam(value="client_id") Long clientId)
+	public ModelAndView init(HttpServletRequest request, @RequestParam(value="client_id") Long clientId)
 	{
-		ModelAndView ret = super.init();
+		ModelAndView ret = super.init(request);
     ret.addObject("mainContent", "accountadmin/general.ftl");
     
     if (clientId != null)

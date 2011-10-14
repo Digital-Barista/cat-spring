@@ -36,16 +36,37 @@ dbi.AccountAdmin = Class.extend({
 		},
 		
 		/**
-		 * Setup the create client button
+		 * Setup the create client buttons
 		 */
 		setupCreateClient: function(){
-		  $('#create-button').click($.proxy(this.handleCreate, this));
+		  $('#save-button').click($.proxy(this.handleSaveClient, this));
+		},
+		
+		/**
+		 * Setup the edit client buttons
+		 */
+		setupEditClient: function(){
+      var client = dbi.client.currentClient;
+			if (client){
+			  var info = $('#client-info');
+			  info.find('input[name="name"]').val(client.name);
+        info.find('input[name="address1"]').val(client.address1);
+        info.find('input[name="address2"]').val(client.address2);
+        info.find('input[name="city"]').val(client.city);
+        info.find('input[name="state"]').val(client.state);
+        info.find('input[name="zip"]').val(client.zip);
+        info.find('input[name="contactName"]').val(client.contactName);
+        info.find('input[name="contactPhone"]').val(client.contactPhone);
+        info.find('input[name="contactEmail"]').val(client.contactEmail);
+			}
+		  $('#save-button').click($.proxy(this.handleSaveClient, this));
+		  $('#cancel-button').click($.proxy(this.handleCancelEdit, this));
 		},
 		
 		/**
 		 * Initialize client slick grid
 		 */
-		setupClientListGrid: function(){
+		setupClientSearch: function(){
 			var columns = [
 			   			{id:"name", name:"Client", field:"name", width:150},
 			   			{id:"contactName", name:"Contact Name", field:"contactName", width:450},
@@ -60,11 +81,16 @@ dbi.AccountAdmin = Class.extend({
 		},
 		
 		/**
-		 * Create client click
+		 * Save client click
 		 */
-		handleCreate: function(event){
+		handleSaveClient: function(event){
 			event.preventDefault();
-			this.createClient();
+			this.saveClient();
+		},
+		
+		handleCancelEdit: function(event){
+			event.preventDefault();
+			$(event.target).closest('.edit-line').removeClass('editing');
 		}
 });
 dbi.accountAdmin = new dbi.AccountAdmin();

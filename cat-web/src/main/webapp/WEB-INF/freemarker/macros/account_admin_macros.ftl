@@ -15,6 +15,16 @@
 <#macro showClientFields>
 	<div id="client-info">
      <table>
+      <tr>
+        <td class="label">Account Type</td>
+        <td>
+          <select>
+            <option></option>
+            <option>Broadcaster</option>
+            <option>Reseller</option>
+          </select>
+        </td>
+      </tr>
       <tr><td class="label">Name</td><td><input name="name" type="text" /></td></tr>
       <tr><td class="label">Address 1</td><td><input name="address1" type="text" /></td></tr>
       <tr><td class="label">Address 2</td><td><input name="address2" type="text" /></td></tr>
@@ -34,3 +44,4 @@
     </table>
 	</div>
 </#macro>
+

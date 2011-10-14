@@ -10,6 +10,6 @@
 <@writeJsonObjects />
 <script>
 $(document).ready(function(){
-  dbi.accountAdmin.setupClientListGrid();
+  dbi.accountAdmin.setupClientSearch();
 });
 </script>

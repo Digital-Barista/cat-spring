@@ -139,22 +139,22 @@
   </bean>
   <bean name="general" parent="navigationItem">
     <property name="parent" ref="accountAdmin" />
-    <property name="url" value="/app/account_admin/general" />
+    <property name="url" value="/app/account_admin/general?client_id={client_id}" />
     <property name="displayName" value="General" />
   </bean>
   <bean name="billing" parent="navigationItem">
     <property name="parent" ref="accountAdmin" />
-    <property name="url" value="/app/account_admin/billing" />
+    <property name="url" value="/app/account_admin/billing?client_id={client_id}" />
     <property name="displayName" value="Billing" />
   </bean>
   <bean name="users" parent="navigationItem">
     <property name="parent" ref="accountAdmin" />
-    <property name="url" value="/app/account_admin/user" />
+    <property name="url" value="/app/account_admin/user?client_id={client_id}" />
     <property name="displayName" value="Users/Permissions" />
   </bean>
   <bean name="socialMediaAccounts" parent="navigationItem">
     <property name="parent" ref="accountAdmin" />
-    <property name="url" value="/app/account_admin/social_media_account" />
+    <property name="url" value="/app/account_admin/social_media_account?client_id={client_id}" />
     <property name="displayName" value="Social Media Accounts" />
   </bean>
 </beans>

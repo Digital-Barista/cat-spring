@@ -104,6 +104,8 @@ a, a:hover, a:visited, a:active{
 .edit-line{
   display:block;
 	border-bottom:1px solid #ccc;
+	width:900px;
+	min-height:40px;
 }
 .edit-line.editing{
   background-color:#eee;
@@ -130,11 +132,13 @@ a, a:hover, a:visited, a:active{
 }
 .edit-line .value{
   float:left;
-	width:760px;
 }
 .edit-line .title{
   float:left;
 	text-align:center;
+}
+.edit-line .edit-button{
+  float:right;
 }
 .edit-line .editable{
 	margin-left:100px;

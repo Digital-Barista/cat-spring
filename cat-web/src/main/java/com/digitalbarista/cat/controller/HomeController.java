@@ -1,5 +1,7 @@
 package com.digitalbarista.cat.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,9 +14,9 @@ public class HomeController extends ShellController
 {
 
 	@RequestMapping(method=RequestMethod.GET, value=Navigation.NAV_ITEM_HOME)
-	public ModelAndView init()
+	public ModelAndView init(HttpServletRequest request)
 	{
-		ModelAndView ret = super.init();
+		ModelAndView ret = super.init(request);
 		ret.addObject("mainContent", "home.ftl");
 		return ret;
 	}

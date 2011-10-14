@@ -1,5 +1,7 @@
 package com.digitalbarista.cat.controller.reporting;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,9 +15,9 @@ public class ReportingController extends ShellController
 {
 
 	@RequestMapping(method=RequestMethod.GET, value=Navigation.NAV_ITEM_REPORTING)
-	public ModelAndView init()
+	public ModelAndView init(HttpServletRequest request)
 	{
-		ModelAndView ret = super.init();
+		ModelAndView ret = super.init(request);
 		return ret;
 	}
 	

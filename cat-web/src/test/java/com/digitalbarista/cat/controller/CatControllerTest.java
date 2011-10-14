@@ -11,6 +11,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 import org.apache.log4j.LogManager;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -58,7 +59,7 @@ public class CatControllerTest extends AbstractTestNGSpringContextTests {
 			if(!CatController.class.isAssignableFrom(controller.getClass()))
 				continue;
 			CatController cc = (CatController)controller;
-			ModelAndView mv = cc.init();
+			ModelAndView mv = cc.init(new MockHttpServletRequest());
 			
 			assertThat(mv.getModel().get("navigation"),not(nullValue()));
 			
