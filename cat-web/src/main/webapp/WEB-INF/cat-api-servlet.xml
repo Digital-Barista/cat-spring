@@ -37,6 +37,7 @@
 			<list>
 				<value>com.digitalbarista.cat.data.Client</value>
 				<value>com.digitalbarista.cat.data.User</value>
+				<value>com.digitalbarista.cat.data.NetworkAccount</value>
 				<value>com.digitalbarista.cat.util.SerializableList</value>
 				<value>com.digitalbarista.cat.view.ServiceResponse</value>
 				<value>com.digitalbarista.cat.view.ServiceResponseError</value>

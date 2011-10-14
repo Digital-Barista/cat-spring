@@ -12,15 +12,17 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 import org.hibernate.annotations.Proxy;
 
-@XmlRootElement
+@XmlRootElement(name="Client")
 @Entity
 @Table(name="client")
 @Proxy(lazy=false)
 public class Client {
 
+  @XmlType(name="Client.Type")
   public enum Type
   {
     Basic,

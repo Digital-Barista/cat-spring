@@ -22,7 +22,7 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Proxy;
 
 
-@XmlRootElement
+@XmlRootElement(name="User")
 @Entity
 @Table(name="users")
 @Proxy(lazy=false)

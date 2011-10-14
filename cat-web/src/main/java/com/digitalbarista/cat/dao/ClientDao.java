@@ -43,9 +43,7 @@ public class ClientDao {
 	@PostFilter("hasPermission(filterObject,'read') or hasRole('ROLE_ADMIN')")
 	public List<Client> getAllClients()
 	{
-		List<Client> ret = sessionFactory.getCurrentSession().createCriteria(Client.class).list();
-		System.out.println("Got "+ret.size()+" items");
-		return ret;
+		return sessionFactory.getCurrentSession().createCriteria(Client.class).list();
 	}
 	
 	@Cacheable("clientObjectIDCache")

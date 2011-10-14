@@ -81,8 +81,7 @@ public class UserDao{
   @PostFilter("hasRole('ROLE_ADMIN') or authentication.name.equals(filterObject.username)")
 	public List<User> getAllUsers()
 	{
-		List<User> ret = sessionFactory.getCurrentSession().createCriteria(User.class).list();
-		return ret;
+		return sessionFactory.getCurrentSession().createCriteria(User.class).list();
 	}
 	
 	@Cacheable(value="userReadableClientCache")
