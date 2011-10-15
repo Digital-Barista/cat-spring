@@ -130,6 +130,7 @@
   <bean name="editClient" parent="navigationItem">
     <property name="navigationItems">
       <list>
+        <bean parent="searchClient" />
         <bean parent="general" />
         <bean parent="billing" />
         <bean parent="users" />

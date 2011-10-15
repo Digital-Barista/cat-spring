@@ -14,13 +14,17 @@
 
 <#macro showClientFields>
 	<div id="client-info">
+	   <input name="id" type="hidden" />
      <table>
       <tr>
         <td class="label">Account Type</td>
         <td>
-          <select>
+          <select name="type">
             <option></option>
-            <option>Broadcaster</option>
+            <option>Basic</option>
+            <option>Standard</option>
+            <option>Professional</option>
+            <option>Enterprise</option>
             <option>Reseller</option>
           </select>
         </td>

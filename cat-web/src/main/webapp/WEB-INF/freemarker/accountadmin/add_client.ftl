@@ -1,6 +1,7 @@
 <#include "/macros/common_macros.ftl" />
 <#include "/macros/account_admin_macros.ftl" />
 
+<div id="UserMessages"></div>
 
 <@showClientFields />
 

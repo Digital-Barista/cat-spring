@@ -3,6 +3,8 @@
 
 <div id="account-container">
 	
+<div id="UserMessages"></div>
+
 	<ul class="edit-options">
 	 <@showEditLine name="Company" value="${currentClient.name!}" contentMacro="showClientFields"  />
 	</ul>

@@ -8,19 +8,17 @@ dbi.AccountAdmin = Class.extend({
 		 * Consturctor
 		 */
 		init: function(){
-		  
 		},
+		
 		
 		/**
 		 * Create a new client
 		 */
-		createClient: function(){
+		saveClient: function(){
 		  var data = dbi.getInputValues($('#client-info'));
+		  dbi.clearUserMessages();
 			dbi.client.saveClient({
-			  data:data,
-				success:function(response){
-					console.log(response);
-				}
+			  data:data
 			});
 		},
 		
@@ -49,6 +47,7 @@ dbi.AccountAdmin = Class.extend({
       var client = dbi.client.currentClient;
 			if (client){
 			  var info = $('#client-info');
+        info.find('input[name="id"]').val(client.id);
 			  info.find('input[name="name"]').val(client.name);
         info.find('input[name="address1"]').val(client.address1);
         info.find('input[name="address2"]').val(client.address2);
@@ -90,6 +89,7 @@ dbi.AccountAdmin = Class.extend({
 		
 		handleCancelEdit: function(event){
 			event.preventDefault();
+      dbi.clearUserMessages();
 			$(event.target).closest('.edit-line').removeClass('editing');
 		}
 });

@@ -4,6 +4,28 @@
  */
 var dbi = $.extend({}, dbi, {
 	
+  global: window,
+  
+  events: {
+    SUCCESS_MESSAGE:'dbi.events.SUCCESS_MESSAGE',
+    FAIL_MESSAGE:'dbi.events.FAIL_MESSAGE'
+  },
+  
+  /**
+   * Dispatch an event that can be listened to
+   * globally
+   */
+  dispatchEvent: function(eventName, data){
+    $(dbi.global).trigger(eventName, data);
+  },
+  
+  /**
+   * Listen to a global event
+   */
+  listen: function(eventName, callback){
+    $(dbi.global).bind(eventName, callback);
+  },
+  
 	/**
 	 * Get the application context.
 	 * TODO: Do this dynamically
@@ -67,5 +89,14 @@ var dbi = $.extend({}, dbi, {
 		$('.edit-link').click(function(e){
 			$(this).closest('.edit-line').addClass('editing');
 		});
+	},
+	
+	clearUserMessages: function(){
+	  $('#UserMessages').empty();
 	}
+});
+
+// Listen to global events
+dbi.listen(dbi.events.SUCCESS_MESSAGE, function(event, data){
+  $('#UserMessages').html(data.message);
 });

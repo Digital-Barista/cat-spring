@@ -26,8 +26,20 @@ dbi.Client = Class.extend({
   saveClient: function(params){
     var props = $.extend({}, {
       data:{},
-      success:undefined,
-      error:undefined
+      success:function(){
+        dbi.dispatchEvent(dbi.events.SUCCESS_MESSAGE, 
+            {message:'Client successfully saved'});
+      },
+      error:function(){
+        dbi.dispatchEvent(dbi.events.SUCCESS_MESSAGE, 
+            {message:'An error occurred. Please try again.'});
+      },
+      statusCode:{
+        403:function(){
+          dbi.dispatchEvent(dbi.events.SUCCESS_MESSAGE, 
+              {message:'You do not have access to modify this client'});
+        }
+      }
     }, 
     params);
     
@@ -38,7 +50,8 @@ dbi.Client = Class.extend({
       url: dbi.getServiceUrl('client'),
       data: JSON.stringify(props.data),
       success:props.success,
-      error:props.error
+      error:props.error,
+      statusCode:props.statusCode
     });
   }
 });
