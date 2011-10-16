@@ -12,7 +12,7 @@ dbi.AccountAdmin = Class.extend({
 		
 		
 		/**
-		 * Create a new client
+		 * Save a client
 		 */
 		saveClient: function(){
 		  var data = dbi.getInputValues($('#client-info'));
@@ -21,7 +21,57 @@ dbi.AccountAdmin = Class.extend({
 			  data:data
 			});
 		},
-		
+
+    /**
+     * Save a network account
+     */
+    saveNetworkAccount: function(element){
+      var self = this;
+      var data = dbi.getInputValues(element);
+      dbi.clearUserMessages();
+      dbi.network.saveAccount({
+        data:data,
+        success:function(response){
+          dbi.dispatchEvent(dbi.events.SUCCESS_MESSAGE, 
+              {message:'Network account successfully saved'});
+          if (!data.id){
+            self.appendCreatedAccount(element, response.response.respObj.NetworkAccount);
+          }
+          element.removeClass('editing');
+        }
+      });
+    },
+    
+    /**
+     * Add the newly created account to the list
+     */
+    appendCreatedAccount: function(element, account){
+      var newLine = element.clone();
+      
+      // Clear the new account fields
+      this.populateNetworkAccount(element, {clientId:account.clientId});
+      newLine.find('.edit-link .name').html(element.find('.edit-link .name').html());
+      newLine.find('.edit-link .edit-button').html('Edit');
+      
+      // Replace all classes with 'edit-line'
+      newLine.attr('class', 'edit-line');
+      element.before(newLine);
+      this.populateNetworkAccount(newLine, account);
+      dbi.setupEditLines(newLine);
+    },
+    
+    /**
+     * Populate fields of a network account
+     */
+    populateNetworkAccount: function(element, account){
+      element.find('.edit-link .name').html(account.accountName);
+      element.find('.edit-link .value').html(account.description);
+      element.find('input[name="id"]').val(account.id);
+      element.find('input[name="clientId"]').val(account.clientId);
+      element.find('input[name="accountName"]').val(account.accountName);
+      element.find('input[name="description"]').val(account.description);
+    },
+    
 		/**
 		 * Edit button cell formatter
 		 */
@@ -45,6 +95,8 @@ dbi.AccountAdmin = Class.extend({
 		 */
 		setupEditClient: function(){
       var client = dbi.client.currentClient;
+      dbi.setupEditLines();
+      
 			if (client){
 			  var info = $('#client-info');
         info.find('input[name="id"]').val(client.id);
@@ -58,8 +110,8 @@ dbi.AccountAdmin = Class.extend({
         info.find('input[name="contactPhone"]').val(client.contactPhone);
         info.find('input[name="contactEmail"]').val(client.contactEmail);
 			}
-		  $('#save-button').click($.proxy(this.handleSaveClient, this));
-		  $('#cancel-button').click($.proxy(this.handleCancelEdit, this));
+		  $('.save-button').click($.proxy(this.handleSaveClient, this));
+		  $('.cancel-button').click($.proxy(this.handleCancelEdit, this));
 		},
 		
 		/**
@@ -79,6 +131,15 @@ dbi.AccountAdmin = Class.extend({
 			$("#client-grid").show();
 		},
 		
+    /**
+     * Initialize network account page
+     */
+    setupNetworkAccounts: function(){
+      dbi.setupEditLines();
+      $('.cancel-button').click($.proxy(this.handleCancelEdit, this));
+      $('.save-button').click($.proxy(this.handleSaveNetwork, this));
+    },
+		
 		/**
 		 * Save client click
 		 */
@@ -87,10 +148,22 @@ dbi.AccountAdmin = Class.extend({
 			this.saveClient();
 		},
 		
+		/**
+		 * Cancel client edit
+		 */
 		handleCancelEdit: function(event){
 			event.preventDefault();
       dbi.clearUserMessages();
 			$(event.target).closest('.edit-line').removeClass('editing');
+		},
+		
+		/**
+		 * Save network account click
+		 */
+		handleSaveNetwork: function(event){
+      event.preventDefault();
+      dbi.clearUserMessages();
+      this.saveNetworkAccount($(event.target).closest('.edit-line'));
 		}
 });
 dbi.accountAdmin = new dbi.AccountAdmin();

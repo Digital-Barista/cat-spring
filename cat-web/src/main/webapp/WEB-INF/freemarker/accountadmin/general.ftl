@@ -6,7 +6,9 @@
 <div id="UserMessages"></div>
 
 	<ul class="edit-options">
-	 <@showEditLine name="Company" value="${currentClient.name!}" contentMacro="showClientFields"  />
+	 <@showEditLine name="Company" value="${currentClient.name!}">
+	   <@showClientFields />
+	 </@showEditLine>
 	</ul>
   
 </div>
@@ -15,7 +17,6 @@
 <@writeJsonObjects />
 <script>
 $(document).ready(function(){
-  dbi.setupEditLines();
   dbi.accountAdmin.setupEditClient();
 });
 </script>

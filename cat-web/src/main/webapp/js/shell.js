@@ -41,9 +41,12 @@ var dbi = $.extend({}, dbi, {
 		var ret = '/' + dbi.getContext() + '/api/';
 		
 		switch(service){
-		case 'client':
-			ret += 'clients';
-			break;
+  		case 'client':
+  			ret += 'clients';
+  			break;
+      case 'networkAccount':
+        ret += 'network-accounts';
+        break;
 		}
 		return ret;
 	},
@@ -85,9 +88,9 @@ var dbi = $.extend({}, dbi, {
 	  return data;
 	},
 	
-	setupEditLines: function(){
-		$('.edit-link').click(function(e){
-			$(this).closest('.edit-line').addClass('editing');
+	setupEditLines: function(element){
+		$('.edit-link', element).click(function(e){
+			$(this).closest('.edit-line').toggleClass('editing');
 		});
 	},
 	

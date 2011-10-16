@@ -1,9 +1,9 @@
-dbi.Client = Class.extend({
+dbi.Network = Class.extend({
 	
 	/**
-	 * Call client service
+	 * Call network account service
 	 */
-	getClients: function(params){
+	getAccounts: function(params){
 		var props = $.extend({}, {
 			name:undefined,
 			success:undefined,
@@ -14,21 +14,21 @@ dbi.Client = Class.extend({
 		$.ajax({
 			type:'GET',
 			dataType:'json',
-			url: dbi.getServiceUrl('client'),
+			url: dbi.getServiceUrl('networkAccounts'),
 			success:props.success,
 			error:props.error
 		});
 	},
 	
 	/**
-   * Call save client service
+   * Call save account service
    */
-  saveClient: function(params){
+  saveAccount: function(params){
     var props = $.extend({}, {
       data:{},
       success:function(){
         dbi.dispatchEvent(dbi.events.SUCCESS_MESSAGE, 
-            {message:'Client successfully saved'});
+            {message:'Network account successfully saved'});
       },
       error:function(){
         dbi.dispatchEvent(dbi.events.FAIL_MESSAGE, 
@@ -37,7 +37,7 @@ dbi.Client = Class.extend({
       statusCode:{
         403:function(){
           dbi.dispatchEvent(dbi.events.FAIL_MESSAGE, 
-              {message:'You do not have access to modify this client'});
+              {message:'You do not have access to modify this network account'});
         }
       }
     }, 
@@ -47,7 +47,7 @@ dbi.Client = Class.extend({
       type:'POST',
       dataType:'json',
       contentType: 'application/json',
-      url: dbi.getServiceUrl('client'),
+      url: dbi.getServiceUrl('networkAccount'),
       data: JSON.stringify(props.data),
       success:props.success,
       error:props.error,
@@ -56,4 +56,4 @@ dbi.Client = Class.extend({
   }
 });
 
-dbi.client = new dbi.Client();
+dbi.network = new dbi.Network();

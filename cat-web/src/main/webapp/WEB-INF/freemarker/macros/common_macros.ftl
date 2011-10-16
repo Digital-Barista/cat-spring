@@ -11,15 +11,15 @@
 	</a>
 </#macro>
 
-<#macro showEditLine name value contentMacro>
-  <li class="edit-line">
+<#macro showEditLine name="" value="" editButtonText="Edit" editLineClass="">
+  <li class="edit-line ${editLineClass}">
     <a class="edit-link" href="javascript:void(0)">
       <span class="name">${name}</span>
       <span class="value">${value}</span>
-      <span class="edit-button">Edit</span>
+      <span class="edit-button">${editButtonText}</span>
     </a>
     <div class="editable">
-      <@.vars[contentMacro] />
+      <#nested />
     </div>
   </li>
 </#macro>

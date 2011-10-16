@@ -107,6 +107,12 @@ a, a:hover, a:visited, a:active{
 	width:900px;
 	min-height:40px;
 }
+.edit-line .edit-line{
+	width:100%;
+}
+.edit-line input{
+	width:300px;
+}
 .edit-line.editing{
   background-color:#eee;
 }
@@ -119,16 +125,21 @@ a, a:hover, a:visited, a:active{
   background-color:#eee;
 }
 .edit-line.editing a.edit-link:hover{
-  background-color:transparent;
-  cursor:default;
+  background-color:#ddd;
 }
-.edit-line.editing .value,
-.edit-line.editing .edit-button{
+.edit-line > a.edit-link > .cancel-button{
+	display:none;
+}
+.edit-line.editing > a.edit-link > .cancel-button{
+  display:block;
+}
+.edit-line.editing > a.edit-link .value,
+.edit-line.editing > a.edit-link .edit-button{
   display:none;
 }
 .edit-line .name{
   float:left;
-	width:100px;
+	width:180px;
 }
 .edit-line .value{
   float:left;
@@ -137,15 +148,16 @@ a, a:hover, a:visited, a:active{
   float:left;
 	text-align:center;
 }
-.edit-line .edit-button{
+.edit-line > a.edit-link .edit-button{
   float:right;
+  color:#63799B;
+  text-decoration: underline;
 }
 .edit-line .editable{
 	margin-left:100px;
-	margin-top:-36px;
 	display:none;
 }
-.edit-line.editing .editable{
+.edit-line.editing > .editable{
 	display:block;
 }
 

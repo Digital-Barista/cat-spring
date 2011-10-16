@@ -14,3 +14,8 @@
   width:920px;
   min-height:600px;
 }
+
+.facebook-accounts .add-new-account .name{
+	color:#63799B;
+  text-decoration: underline;
+}

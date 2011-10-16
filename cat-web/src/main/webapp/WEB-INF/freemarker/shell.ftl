@@ -19,6 +19,7 @@
     <script src="<@spring.url '/js/lib/class.js' />"></script>
     <script src="<@spring.url '/js/shell.js' />"></script>
     <script src="<@spring.url '/js/client.js' />"></script>
+    <script src="<@spring.url '/js/network.js' />"></script>
     
   </head>
   <body>

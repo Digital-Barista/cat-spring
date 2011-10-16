@@ -56,7 +56,7 @@ public class NetworkAccount {
   private String description;
 
   @Column(name="client_id")
-  private Long clientid;
+  private Long clientId;
   
   @XmlElement
   public Long getId() {
@@ -103,18 +103,21 @@ public class NetworkAccount {
     this.description = description;
   }
 
-  @XmlElement
-  public Long getClientid() {
-    return clientid;
-  }
-
-  public void setClientid(Long clientid) {
-    this.clientid = clientid;
-  }
   
   @XmlElement
   public boolean isAuthorized()
   {
     return credentials!=null;
+  }
+
+  @XmlElement
+	public Long getClientId()
+  {
+  	return clientId;
+  }
+
+	public void setClientId(Long clientId)
+  {
+  	this.clientId = clientId;
   }
 }

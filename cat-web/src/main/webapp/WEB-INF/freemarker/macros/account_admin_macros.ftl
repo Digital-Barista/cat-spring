@@ -2,13 +2,14 @@
 
 <#macro writeJsonObjects>
   <script>
-    <#if clientList??>
-      dbi.client.clientList = ${clientList};
+    <#if clientListJson??>
+      dbi.client.clientList = ${clientListJson};
     </#if>
     
     <#if currentClientJson??>
       dbi.client.currentClient = ${currentClientJson};
     </#if>
+    
   </script>
 </#macro>
 
@@ -41,8 +42,8 @@
       <tr>
         <td></td>
         <td>
-          <@button id="save-button" href="javascript:void(0)" text="Save" />
-          <@button id="cancel-button" href="javascript:void(0)" text="Cancel" />
+          <@button class="save-button" href="javascript:void(0)" text="Save" />
+          <@button class="cancel-button" href="javascript:void(0)" text="Cancel" />
         </td>
       </tr>
     </table>

@@ -43,7 +43,8 @@ public class NetworkAccountDao {
       netAccount = (NetworkAccount)sessionFactory.getCurrentSession().get(NetworkAccount.class, account.getId());
     if(netAccount==null)
     {
-      sessionFactory.getCurrentSession().save(account);
+      Long id = (Long)sessionFactory.getCurrentSession().save(account);
+      netAccount = (NetworkAccount)sessionFactory.getCurrentSession().get(NetworkAccount.class, id);
     } else {
       netAccount.setDescription(account.getDescription());  //Description is really the only thing that can change.
       if(account.getCredentials()!=null)
