@@ -15,7 +15,8 @@
   min-height:600px;
 }
 
-.facebook-accounts .add-new-account .name{
+#accounts .activate,
+#accounts .add-new-account .name{
 	color:#63799B;
   text-decoration: underline;
 }

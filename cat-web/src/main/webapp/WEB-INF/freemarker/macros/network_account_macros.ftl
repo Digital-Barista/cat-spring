@@ -25,12 +25,7 @@
     <#list accountList as account>
       <#if account.type == "Twitter">
       
-        <#local activated = "Activated" />
-        <#if account.credentials??>
-          <#local activated = "Activate" />
-        </#if>
-        
-        <@showEditLine account.accountName activated>
+        <@showEditLine account.accountName account.description>
           <@displayTwitterFields 
             id=account.id
             clientId=currentClient.id 
@@ -68,7 +63,7 @@
 </#macro>
 
 <#macro displayTwitterFields id="" clientId="" accountName="" description="" authorized=false>
-  <#local active = 'Inactive <a class="activate" href="javascript:void(0)">Activate</a>' />
+  <#local active = 'Inactive <a class="activate" href="javascript:void(0)">(Activate)</a>' />
   <#if authorized == true>
     <#local active = "Active" />
   </#if>

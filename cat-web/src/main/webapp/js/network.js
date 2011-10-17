@@ -5,19 +5,13 @@ dbi.Network = Class.extend({
 	 */
 	getAccounts: function(params){
 		var props = $.extend({}, {
-			name:undefined,
-			success:undefined,
-			error:undefined
+		  type:'GET',
+      dataType:'json',
+      url: dbi.getServiceUrl('networkAccounts')
 		}, 
 		params);
 		
-		$.ajax({
-			type:'GET',
-			dataType:'json',
-			url: dbi.getServiceUrl('networkAccounts'),
-			success:props.success,
-			error:props.error
-		});
+		$.ajax(props);
 	},
 	
 	/**
@@ -25,7 +19,10 @@ dbi.Network = Class.extend({
    */
   saveAccount: function(params){
     var props = $.extend({}, {
-      data:{},
+      type:'POST',
+      dataType:'json',
+      contentType: 'application/json',
+      url: dbi.getServiceUrl('networkAccount'),
       success:function(){
         dbi.dispatchEvent(dbi.events.SUCCESS_MESSAGE, 
             {message:'Network account successfully saved'});
@@ -43,16 +40,8 @@ dbi.Network = Class.extend({
     }, 
     params);
     
-    $.ajax({
-      type:'POST',
-      dataType:'json',
-      contentType: 'application/json',
-      url: dbi.getServiceUrl('networkAccount'),
-      data: JSON.stringify(props.data),
-      success:props.success,
-      error:props.error,
-      statusCode:props.statusCode
-    });
+    props.data = JSON.stringify(props.data);
+    $.ajax(props);
   }
 });
 

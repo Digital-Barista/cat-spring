@@ -37,7 +37,16 @@ dbi.AccountAdmin = Class.extend({
           if (!data.id){
             self.appendCreatedAccount(element, response.response.respObj.NetworkAccount);
           }
+          else{
+            self.populateNetworkAccount(element, response.response.respObj.NetworkAccount);
+          }
           element.removeClass('editing');
+        },
+        beforeSend: function(){
+          dbi.setButtonsLoading(element, true);
+        },
+        complete: function(){
+          dbi.setButtonsLoading(element, false);
         }
       });
     },
@@ -52,12 +61,13 @@ dbi.AccountAdmin = Class.extend({
       this.populateNetworkAccount(element, {clientId:account.clientId});
       newLine.find('.edit-link .name').html(element.find('.edit-link .name').html());
       newLine.find('.edit-link .edit-button').html('Edit');
+      dbi.setButtonsLoading(newLine, false);
       
       // Replace all classes with 'edit-line'
       newLine.attr('class', 'edit-line');
       element.before(newLine);
+      this.setupNetworkAccounts(newLine);
       this.populateNetworkAccount(newLine, account);
-      dbi.setupEditLines(newLine);
     },
     
     /**
@@ -134,10 +144,10 @@ dbi.AccountAdmin = Class.extend({
     /**
      * Initialize network account page
      */
-    setupNetworkAccounts: function(){
-      dbi.setupEditLines();
-      $('.cancel-button').click($.proxy(this.handleCancelEdit, this));
-      $('.save-button').click($.proxy(this.handleSaveNetwork, this));
+    setupNetworkAccounts: function(element){
+      dbi.setupEditLines(element);
+      $('.cancel-button', element).click($.proxy(this.handleCancelEdit, this));
+      $('.save-button', element).click($.proxy(this.handleSaveNetwork, this));
     },
 		
 		/**

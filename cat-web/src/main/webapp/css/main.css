@@ -92,7 +92,11 @@ a, a:hover, a:visited, a:active{
 .button .button-text {
 	padding:5px 10px;
 }
-
+.button-loading{
+	width:50px;
+	height:25px;
+	background:url('../images/button-loading.gif') center no-repeat;
+}
 .label{
   width:100px;
   display:inline-block;

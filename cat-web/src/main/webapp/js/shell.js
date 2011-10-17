@@ -90,12 +90,29 @@ var dbi = $.extend({}, dbi, {
 	
 	setupEditLines: function(element){
 		$('.edit-link', element).click(function(e){
-			$(this).closest('.edit-line').toggleClass('editing');
+			$(this).closest('.edit-line')
+			  .toggleClass('editing')
+			  .find('.edit-line')
+			  .removeClass('editing');
 		});
 	},
 	
 	clearUserMessages: function(){
 	  $('#UserMessages').empty();
+	},
+	
+	setButtonsLoading: function(element, isLoading){
+	  var buttons = element.find('.button');
+	  if (isLoading){
+	    buttons.hide();
+	    if (buttons.length > 0){
+	      $(buttons[0]).before($('<div class="button-loading"></div>'));
+	    }
+	  }
+	  else{
+	    buttons.show();
+	    element.find('.button-loading').remove();
+	  }
 	}
 });
 
