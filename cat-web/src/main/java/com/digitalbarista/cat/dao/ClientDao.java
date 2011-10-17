@@ -33,7 +33,7 @@ public class ClientDao {
 		return (Client)sessionFactory.getCurrentSession().load(Client.class, id);
 	}
 	
-	@PreAuthorize("(hasRole('ROLE_ADMIN') or ((#client.id!=null) and hasPermission(#client,'write'))")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or ((#client.id!=null) and hasPermission(#client,'write'))")
 	@CacheEvict(value="clientCache", key="#client.id")
 	public Client save(Client client)
 	{
