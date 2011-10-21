@@ -1,4 +1,5 @@
 <#include "/macros/account_admin_macros.ftl" />
+<#include "/macros/json_macros.ftl" />
 
 <div id="search-client">
   <div id="client-grid">

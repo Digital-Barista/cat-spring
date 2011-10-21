@@ -1,0 +1,8 @@
+#user-switcher #user-grid{
+  width:920px;
+  min-height:600px;
+}
+
+#user-switcher .enabled-cell{
+	text-align:center;
+}

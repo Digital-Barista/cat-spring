@@ -1,18 +1,5 @@
 <#include "/macros/common_macros.ftl" />
 
-<#macro writeJsonObjects>
-  <script>
-    <#if clientListJson??>
-      dbi.client.clientList = ${clientListJson};
-    </#if>
-    
-    <#if currentClientJson??>
-      dbi.client.currentClient = ${currentClientJson};
-    </#if>
-    
-  </script>
-</#macro>
-
 <#macro showClientFields>
 	<div id="client-info">
 	   <input name="id" type="hidden" />

@@ -1,5 +1,6 @@
 <#include "/macros/account_admin_macros.ftl" />
 <#include "/macros/network_account_macros.ftl" />
+<#include "/macros/json_macros.ftl" />
 
 <div id="UserMessages"></div>
 

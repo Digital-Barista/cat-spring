@@ -130,7 +130,8 @@ dbi.AccountAdmin = Class.extend({
 		setupClientSearch: function(){
 			var columns = [
 			   			{id:"name", name:"Client", field:"name", width:150},
-			   			{id:"contactName", name:"Contact Name", field:"contactName", width:450},
+              {id:"type", name:"Account", field:"type", width:150},
+			   			{id:"contactName", name:"Contact Name", field:"contactName", width:540},
               {id:"edit", field:"Edit", width:80, formatter:this.EditButtonCellFormatter},
 			   		];
 			var options = {

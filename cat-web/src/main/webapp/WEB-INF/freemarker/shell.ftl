@@ -9,6 +9,7 @@
     <link type="text/css" href="<@spring.url '/css/jquery-ui-1.8.5.custom.css'/>" rel="stylesheet" />
     <link type="text/css" href="<@spring.url '/css/slick-default-theme.css'/>" rel="stylesheet" />
     <link type="text/css" href="<@spring.url '/css/account_admin.css'/>" rel="stylesheet" />
+    <link type="text/css" href="<@spring.url '/css/user_switcher.css'/>" rel="stylesheet" />
 	
     <#-- Shared scripts -->
     <script src="<@spring.url '/js/lib/jquery-1.6.4.min.js' />"></script>
