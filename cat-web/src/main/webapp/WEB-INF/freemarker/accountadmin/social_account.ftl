@@ -2,8 +2,6 @@
 <#include "/macros/network_account_macros.ftl" />
 <#include "/macros/json_macros.ftl" />
 
-<div id="UserMessages"></div>
-
 <div id="network-account">
   <ul id="accounts">
     <@showEditLine "Facebook" "">

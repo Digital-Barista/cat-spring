@@ -37,6 +37,7 @@
       <#-- Template for main body content -->
       <div id="main-content">
       	<#if mainContent??>
+          <div id="UserMessages"></div>
         	<#include mainContent />
         </#if>
       </div>

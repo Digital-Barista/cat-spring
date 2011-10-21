@@ -7,17 +7,17 @@
     <tr>
       <td class="label">Enabled</td>
       <td>
-        <input class="enabled" type="checkbox" <#if user.enabled?? && user.enabled>checked</#if> />
+        <input name="enabled" class="enabled" type="checkbox" <#if user.enabled?? && user.enabled>checked</#if> />
       </td>
     </tr>
-    <tr><td class="label">Username</td><td><input name="name" type="text" value="${user.username!}" /></td></tr>
+    <tr><td class="label">Username</td><td><input name="username" type="text" value="${user.username!}" /></td></tr>
     <tr><td class="label">Password</td><td><input name="password" type="password" /></td></tr>
     <tr><td class="label">Confirm Password</td><td><input name="confirm" type="password" /></td></tr>
     <tr>
       <td></td>
       <td>
         <@button class="save-button" href="javascript:void(0)" text="Save" />
-        <@button class="cancel-button" href="javascript:void(0)" text="Cancel" />
+        <@button class="cancel-button" href=springUrl('/app/user/search') text="Cancel" />
       </td>
     </tr>
   </table>

@@ -23,7 +23,10 @@ var dbi = $.extend({}, dbi, {
    * Listen to a global event
    */
   listen: function(eventName, callback){
-    $(dbi.global).bind(eventName, callback);
+    var events = typeof eventName == 'string' ? [eventName] : eventName;
+    for (var i = 0, L = events.length; i < L; i++) {
+      $(this.global).bind(events[i], callback);
+    }
   },
   
 	/**
@@ -38,14 +41,20 @@ var dbi = $.extend({}, dbi, {
 	 * Get a service URL by name of service
 	 */
 	getServiceUrl: function(service){
-		var ret = '/' + dbi.getContext() + '/api/';
+		var ret = '/' + dbi.getContext();
 		
 		switch(service){
   		case 'client':
-  			ret += 'clients';
+  			ret += '/api/clients';
   			break;
       case 'networkAccount':
-        ret += 'network-accounts';
+        ret += '/api/network-accounts';
+        break;
+      case 'user':
+        ret += '/api/users';
+        break;
+      case 'switchUser':
+        ret += '/app/j_spring_security_switch_user';
         break;
 		}
 		return ret;
@@ -117,6 +126,16 @@ var dbi = $.extend({}, dbi, {
 });
 
 // Listen to global events
-dbi.listen(dbi.events.SUCCESS_MESSAGE, function(event, data){
-  $('#UserMessages').html(data.message);
+dbi.listen(dbi.events.FAIL_MESSAGE, function(event, data){
+  $('#UserMessages')
+    .removeClass('fail')
+    .addClass('success')
+    .html(data.message);
+});
+
+dbi.listen(dbi.events.FAIL_MESSAGE, function(event, data){
+  $('#UserMessages')
+    .removeClass('success')
+    .addClass('fail')
+    .html(data.message);
 });

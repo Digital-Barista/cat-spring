@@ -31,3 +31,7 @@
     <#return {} />
   </#if>
 </#function>
+
+<#function springUrl relativeUrl>
+  <#return springMacroRequestContext.getContextPath() + relativeUrl />
+</#function>
