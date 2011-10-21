@@ -25,6 +25,7 @@
 	  <property name="accessDecisionManager" ref="webAccessDecisionManager"/>
 	  <property name="securityMetadataSource">
 	    <security:filter-security-metadata-source>
+	    	<security:intercept-url pattern="/app/j_spring_security_switch_user" access="ROLE_ADMIN"/>
 			<security:intercept-url pattern="/app/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 			<security:intercept-url pattern="/app/denied/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 			<security:intercept-url pattern="/**" access="ROLE_USER"/>
@@ -51,13 +52,21 @@
 															   AnonymousAuthFilter,
 															   SessionManagementFilter,
 															   AppExceptionTranslationFilter,
-															   AppFilterSecurityInterceptor"/>
+															   AppFilterSecurityInterceptor,
+															   SwitchUserFilter"/>
 			<security:filter-chain  pattern="/api/**" filters="ApiSecurityContextPersistenceFilter,
 															   BasicAuthenticationFilter,
 															   ApiExceptionTranslationFilter,
 															   ApiFilterSecurityInterceptor"/>
 		</security:filter-chain-map>
 	</bean>
+
+	<bean id="SwitchUserFilter" class="com.digitalbarista.cat.security.FixedSwitchUserFilter">
+	    <property name="userDetailsService" ref="userDetailsService" />
+	    <property name="switchUserUrl" value="/j_spring_security_switch_user" />
+	    <property name="exitUserUrl" value="/j_spring_security_exit_user" />
+	    <property name="targetUrl" value="/app/home" />
+ 	</bean>
 
 	<bean id="LogoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
 	    <constructor-arg value="/app/login/afterlogout" />
@@ -176,7 +185,7 @@
 			<security:password-encoder hash="sha">
 				<security:salt-source ref="cat-salt"/>
 			</security:password-encoder>
-			<security:jdbc-user-service data-source-ref="cat2-ds"/>
+			<security:jdbc-user-service id="userDetailsService" data-source-ref="cat2-ds"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
 	

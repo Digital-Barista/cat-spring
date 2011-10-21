@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.switchuser.SwitchUserGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -116,10 +120,28 @@ public abstract class CatController
 		return null;
 	}
 	
+	public boolean isSwitchedUser()
+	{
+		try
+		{
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			for(GrantedAuthority ga : auth.getAuthorities())
+			{
+				if(ga instanceof SwitchUserGrantedAuthority)
+					return true;
+			}
+			return false;
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
+	}
+	
 	public Navigation getNavigation()
-  {
-	  return this.ctxProvider.getApplicationContext().getBean(Navigation.class);
-  }
+	{
+		return this.ctxProvider.getApplicationContext().getBean(Navigation.class);
+	}
 	
 	public String serializeToJson(Object obj)
 	{
