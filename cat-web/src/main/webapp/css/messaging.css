@@ -1,0 +1,8 @@
+#broadcast textarea.tinymce{
+  min-height:400px;
+  width:915px;
+}
+
+#broadcast .coupon-field{
+  display:none;
+}

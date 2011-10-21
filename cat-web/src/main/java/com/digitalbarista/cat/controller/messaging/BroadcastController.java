@@ -18,6 +18,7 @@ public class BroadcastController extends ShellController
 	public ModelAndView init(HttpServletRequest request)
 	{
 		ModelAndView ret = super.init(request);
+		ret.addObject("mainContent", "messaging/broadcast.ftl");
 		return ret;
 	}
 	
