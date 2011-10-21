@@ -6,3 +6,11 @@
 #user-switcher .enabled-cell{
 	text-align:center;
 }
+
+#user-add .enabled,
+#user-edit .enabled{
+	width:14px;
+}
+#user-add .cancel-button{
+  display:none;
+}

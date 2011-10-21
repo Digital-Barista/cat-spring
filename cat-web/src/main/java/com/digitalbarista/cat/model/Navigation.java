@@ -22,7 +22,9 @@ public class Navigation
 	
 	public static final String NAV_ITEM_COUPON = "coupon";
 	public static final String NAV_ITEM_REPORTING = "reporting";
-	public static final String NAV_ITEM_USER_SWITCHER = "user_switcher";
+	public static final String NAV_ITEM_USER_SEARCH = "user/search";
+	public static final String NAV_ITEM_USER_ADD = "user/add";
+	public static final String NAV_ITEM_USER_EDIT = "user/edit";
 	public static final String NAV_ITEM_SYSTEM_ADMIN = "system_admin";
 
 	public static final String NAV_ITEM_ACCOUNT = "account";

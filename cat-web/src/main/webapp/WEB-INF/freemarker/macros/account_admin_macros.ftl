@@ -9,11 +9,11 @@
         <td>
           <select name="type">
             <option></option>
-            <option>Basic</option>
-            <option>Standard</option>
-            <option>Professional</option>
-            <option>Enterprise</option>
-            <option>Reseller</option>
+            <option value="Basic">Basic</option>
+            <option value="Standard">Standard</option>
+            <option value="Professional">Professional</option>
+            <option value="Enterprise">Enterprise</option>
+            <option value="Reseller">Reseller</option>
           </select>
         </td>
       </tr>

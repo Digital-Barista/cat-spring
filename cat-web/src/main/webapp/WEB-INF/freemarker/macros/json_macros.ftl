@@ -11,5 +11,9 @@
     <#if userListJson??>
       dbi.user.userList = ${userListJson};
     </#if>
+    
+    <#if currentUserJson??>
+      dbi.user.currentUser = ${currentUserJson};
+    </#if>
   </script>
 </#macro>

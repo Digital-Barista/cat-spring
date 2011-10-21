@@ -18,7 +18,14 @@ dbi.AccountAdmin = Class.extend({
 		  var data = dbi.getInputValues($('#client-info'));
 		  dbi.clearUserMessages();
 			dbi.client.saveClient({
-			  data:data
+			  data:data,
+			  success:function(response){
+			    dbi.client.currentClient = response.response.respObj.Client;
+		      $('.edit-line').removeClass('editing');
+	        dbi.dispatchEvent(dbi.events.SUCCESS_MESSAGE, 
+	            {message:'Client successfully saved'});
+	        this.setupEditClient();
+			  }
 			});
 		},
 
@@ -109,6 +116,7 @@ dbi.AccountAdmin = Class.extend({
       
 			if (client){
 			  var info = $('#client-info');
+			  info.find('select[name="type"] option[value="' + client.type + '"]').attr('selected', 'selected');
         info.find('input[name="id"]').val(client.id);
 			  info.find('input[name="name"]').val(client.name);
         info.find('input[name="address1"]').val(client.address1);

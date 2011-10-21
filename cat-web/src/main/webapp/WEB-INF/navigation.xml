@@ -18,7 +18,7 @@
           <property name="displayName" value="Home" />
         </bean>
         <bean parent="navigationItem">
-          <property name="url" value="/app/messaging" />
+          <property name="url" value="/app/messaging/campaign_list" />
           <property name="displayName" value="Messaging" />
           <property name="navigationItems">
             <list>
@@ -81,7 +81,7 @@
     </property>
     <property name="adminItems">
       <list>
-        <bean parent="userSwitcher" />
+        <bean parent="user" />
         <bean parent="systemAdmin" />
         <bean parent="accountAdmin" />
         <bean parent="editClient" />
@@ -92,9 +92,47 @@
   <!-- 
     Navigation Items 
   -->
-  <bean name="userSwitcher" parent="navigationItem">
-    <property name="url" value="/app/user_switcher" />
-    <property name="displayName" value="User Switcher" />
+  <bean name="user" parent="navigationItem">
+    <property name="url" value="/app/user/search" />
+    <property name="displayName" value="Users" />
+    <property name="navigationItems">
+      <list>
+        <bean parent="findUser" />
+        <bean parent="userInfo" />
+      </list>
+    </property>
+  </bean>
+  
+  <bean name="findUser" parent="navigationItem">
+    <property name="url" value="/app/user/search" />
+    <property name="navigationItems">
+      <list>
+        <bean parent="addUser" />
+        <bean parent="searchUser" />
+      </list>
+    </property>
+  </bean>
+  <bean name="userInfo" parent="navigationItem">
+    <property name="url" value="/app/user/edit" />
+    <property name="navigationItems">
+      <list>
+        <bean parent="addUser" />
+        <bean parent="searchUser" />
+        <bean parent="editUser" />
+      </list>
+    </property>
+  </bean>
+  <bean name="searchUser" parent="navigationItem">
+    <property name="url" value="/app/user/search" />
+    <property name="displayName" value="Search Users" />
+  </bean>
+  <bean name="editUser" parent="navigationItem">
+    <property name="url" value="/app/user/edit" />
+    <property name="displayName" value="Edit User" />
+  </bean>
+  <bean name="addUser" parent="navigationItem">
+    <property name="url" value="/app/user/add" />
+    <property name="displayName" value="Add User" />
   </bean>
   <bean name="systemAdmin" parent="navigationItem">
     <property name="url" value="/app/system_admin" />
@@ -131,6 +169,7 @@
     <property name="navigationItems">
       <list>
         <bean parent="searchClient" />
+        <bean parent="addClient" />
         <bean parent="general" />
         <bean parent="billing" />
         <bean parent="users" />

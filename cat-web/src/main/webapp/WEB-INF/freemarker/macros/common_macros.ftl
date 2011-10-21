@@ -23,3 +23,11 @@
     </div>
   </li>
 </#macro>
+
+<#function getObject object="">
+  <#if object?has_content>
+    <#return object />
+  <#else>
+    <#return {} />
+  </#if>
+</#function>
