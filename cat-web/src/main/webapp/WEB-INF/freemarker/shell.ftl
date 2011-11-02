@@ -20,6 +20,7 @@
     <script src="<@spring.url '/js/lib/slick.editors.js' />"></script>
     <script src="<@spring.url '/js/lib/tiny_mce/jquery.tinymce.js' />"></script>
     <script src="<@spring.url '/js/lib/class.js' />"></script>
+    <script src="<@spring.url '/js/lib/joint.all.min.js' />"></script>
     <script src="<@spring.url '/js/shell.js' />"></script>
     <script src="<@spring.url '/js/client.js' />"></script>
     <script src="<@spring.url '/js/network.js' />"></script>

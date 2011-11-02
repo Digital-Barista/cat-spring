@@ -18,6 +18,7 @@ public class BuildCampaignController extends ShellController
 	public ModelAndView init(HttpServletRequest request)
 	{
 		ModelAndView ret = super.init(request);
+		ret.addObject("mainContent", "messaging/build.ftl");
 		return ret;
 	}
 	
