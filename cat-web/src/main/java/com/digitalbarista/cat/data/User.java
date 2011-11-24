@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
@@ -41,9 +42,15 @@ public class User {
   @XmlElement
 	private String username;
 	
-	@NotNull @Size(max=50)
+	@Size(max=50)
 	@Column(name="password")
+	private String encryptedPassword;
+	
+	@Transient
 	private String password;
+	 
+	@Transient
+	private String passwordConfirm;
 	
 	@Column(name="enabled")
 	private boolean enabled;
@@ -62,7 +69,7 @@ public class User {
 	public User(String username,String encodedPassword)
 	{
 		this.username=username;
-		this.password=encodedPassword;
+		this.encryptedPassword=encodedPassword;
 	}
 	
 	public String getUsername()
@@ -74,10 +81,30 @@ public class User {
 	{
     if(encryptedPassword==null || encryptedPassword.trim().length()==0)
       return;
-		this.password = encryptedPassword;
+		this.encryptedPassword = encryptedPassword;
 	}
 	
   public String getEncryptedPassword(){return null;}
+  
+  public void setPassword(String password)
+  {
+    this.password = password;
+  }
+  
+  public String getPassword()
+  {
+    return password;
+  }
+  
+  public void setConfirm(String confirm)
+  {
+    this.passwordConfirm = confirm;
+  }
+  
+  public String getConfirm()
+  {
+    return passwordConfirm;
+  }
   
   @XmlElement
 	public boolean isEnabled()
